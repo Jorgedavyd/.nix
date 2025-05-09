@@ -2,7 +2,7 @@
 
 {
     home.packages = with pkgs; [
-        yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
+        yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr gh
         traceroute nettools nmap
         texliveFull zathura
         hyprland hyprlock rofi grim grimblast swww waybar starship
