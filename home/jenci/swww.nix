@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
     wallpaperSpec = [
         { url = "https://github.com/HomeomorphicHooligan/arch-minimal-wallpapers/blob/main/wallpapers/full-hd/rosepine.png?raw=true"; sha256 = "09nxpgskcnma8hhhzx5hlz51n7dgdxnls1vc8sphn2l59c479812"; }
@@ -14,24 +13,24 @@ let
             matches = builtins.match ".*/([^/]+)$" url;
         in
             if matches != null then builtins.head matches else "wallpaper";
-
     imageFromURL = spec:
         pkgs.stdenv.mkDerivation rec {
             pname = basename spec.url;
             version = "1.0.0";
-            src = builtins.fetchurl {
+
+            dontUnpack = true;
+
+            src = pkgs.fetchurl {
                 url = spec.url;
                 sha256 = spec.sha256;
             };
 
             installPhase = ''
-        mkdir -p $out/share/wallpapers
-        cp $src $out/share/wallpapers/${pname}
+                mkdir -p $out/share/wallpapers
+                cp ${src} $out/share/wallpapers/${pname}
             '';
         };
-
     wallpapers = builtins.map imageFromURL wallpaperSpec;
-
 in {
     home.packages = wallpapers;
 }
