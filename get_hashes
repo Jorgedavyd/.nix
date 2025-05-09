@@ -1,0 +1,20 @@
+#!/usr/bin/sh
+output_file="home/jenci/swww.nix"
+urls = (
+    "https://github.com/HomeomorphicHooligan/arch-minimal-wallpapers/blob/main/wallpapers/full-hd/rosepine.png?raw=true"
+    "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/alena-aenami-horizon.png"
+    "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/alena-aenami-timeless.jpg"
+    "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/colormate-monogatari.jpg"
+    "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/colormate-monogatari.jpg"
+    "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/darkkal44-come-with-me-surfaces.png"
+    "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/gloomilygray-journey.jpg"
+    "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/alena-aenami-in-search-of-peace.png"
+)
+
+echo "" >> "$output_file"
+echo "# === Prefetched wallpaper hashes ===" >> "$output_file"
+
+for url in "${urls[@]}"; do
+  hash=$(nix-prefetch-url --unpack "$url" 2>/dev/null)
+  echo "{ url = \"$url\"; hash = \"$hash\"; }," >> "$output_file"
+done
