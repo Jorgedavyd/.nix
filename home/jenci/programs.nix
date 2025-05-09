@@ -1,5 +1,4 @@
 { pkgs, ...}:
-
 {
     home.packages = with pkgs; [
         yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr gh
