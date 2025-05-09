@@ -19,7 +19,7 @@ let
         pkgs.stdenv.mkDerivation rec {
             pname = basename spec.url;
             version = "1.0.0";
-            src = fetchurl {
+            src = builtins.fetchurl {
                 url = spec.url;
                 sha256 = spec.sha256;
             };
