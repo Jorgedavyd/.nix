@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, username, locale, timezone, ... }:
+{ config, pkgs, inputs, username, ... }:
 
 {
     programs.home-manager.enable = true;
