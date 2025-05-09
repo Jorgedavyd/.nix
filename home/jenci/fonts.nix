@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
-    fontFromURL = name: hash: pkgs.stdenv.mkDerivation {
+    fontFromURL = name: sha256: pkgs.stdenv.mkDerivation {
         pname = name;
         version = "3.4.0";
         src = pkgs.fetchzip {
             url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/${name}.zip";
-            hash = hash;
+            sha256 = sha256;
         };
 
         installPhase = ''

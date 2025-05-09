@@ -16,7 +16,7 @@
   };
 
   fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/a14e645d-f187-4dab-86c2-5224c06bd8c5";
+    device = "/dev/disk/by-label/NIXDATA";
     fsType = "ext4";
     options = [ "defaults" "noatime" ];
   };
