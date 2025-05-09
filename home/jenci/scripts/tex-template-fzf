@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+find "$HOME/.local/scripts/tex-templates" -type f | fzf --prompt="Select a template: " | xargs -I{} unzip "{}"
+

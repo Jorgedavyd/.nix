@@ -1,0 +1,8 @@
+{
+kernelpackages,
+...
+}:
+
+{
+    boot.kernelPackages = kernelpackages;
+}

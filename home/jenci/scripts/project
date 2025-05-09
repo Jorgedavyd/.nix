@@ -1,0 +1,165 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\n\t'
+
+setup_organization() {
+    local org
+    org=$(gh org list | fzf)
+    echo "$org"
+}
+
+check_dependencies() {
+    local deps=("yq" "gh" "git" "pre-commit")
+    local missing_deps=()
+
+    for dep in "${deps[@]}"; do
+        if ! command -v "$dep" &> /dev/null; then
+            missing_deps+=("$dep")
+        fi
+    done
+
+    if (( ${#missing_deps[@]} > 0 )); then
+        log_error "Missing required dependencies: ${missing_deps[*]}"
+        log_info "Please install the missing dependencies and try again."
+        exit 1
+    fi
+}
+
+readonly CONFIG_FILE="$HOME/project_config_for_current_path.yaml"
+readonly CONFIG_TEMPLATE="$HOME/.local/scripts/project_manager/config.yml"
+
+[[ -f "$CONFIG_FILE" ]] && rm -f "$CONFIG_FILE"
+cp "$CONFIG_TEMPLATE" "$CONFIG_FILE"
+
+if command -v vim &>/dev/null; then
+    vim "$CONFIG_FILE"
+elif command -v nano &>/dev/null; then
+    nano "$CONFIG_FILE"
+else
+    echo "Neither vim nor nano is available. Please install an editor."
+    exit 1
+fi
+
+name=$(yq ".PROJECT_NAME" "$CONFIG_FILE" | sed 's/"//g' | tr " " "-" | tr "'" "-" | tr "\"" "-") || { log_error "Project name is required"; exit 1; }
+description=$(yq ".DESCRIPTION" "$CONFIG_FILE" | sed 's/"//g')
+public=$(yq ".PUBLIC" "$CONFIG_FILE" || echo "false")
+
+rm -f "$CONFIG_FILE"
+
+check_dependencies
+org=$(setup_organization)
+[[ ! -z "$org" ]] && name="$org/$name" && mkdir -p "$org"
+
+log_info() { printf "\033[0;34m[INFO]\033[0m %s\n" "$*" >&2; }
+log_error() { printf "\033[0;31m[ERROR]\033[0m %s\n" "$*" >&2; }
+log_warning() { printf "\033[0;33m[WARNING]\033[0m %s\n" "$*" >&2; }
+log_success() { printf "\033[0;32m[SUCCESS]\033[0m %s\n" "$*" >&2; }
+
+trap 'log_error "Error occurred in script at line $LINENO. Command: $BASH_COMMAND. Exit code: $?"' ERR
+
+get_path() {
+    echo "$HOME/.local/scripts/project_manager/$1/"
+}
+
+get_choice() {
+    local path="$(get_path "$1")"
+    local selection
+    while true; do
+        selection=$(find "$path/" -mindepth 1 -maxdepth 1 -exec basename {} \; | fzf --header "$(tr '[:lower:]' '[:upper:]' <<< "$1")")
+        [[ -z $selection ]] && break
+        echo "$path$selection"
+    done
+}
+
+setup_workflow() {
+    readarray -t workflows < <(get_choice "workflows")
+    local project_path="$HOME/projects/$name"
+    for item in "${workflows[@]}"; do
+        if cp -r "$item"/* "$project_path"; then
+            log_success "Successfully copied workflow: $(basename "$item")"
+        else
+            log_error "Failed to copy workflow: $(basename "$item")"
+        fi
+    done
+}
+
+setup_actions() {
+    readarray -t actions < <(get_choice "actions")
+    local github_path="$HOME/projects/$name/.github"
+    local target_path="$github_path/workflows"
+    mkdir "$github_path"
+    mkdir "$target_path"
+    for item in "${actions[@]}"; do
+        if cp "$item" "$target_path"; then
+            log_success "Successfully copied action: $(basename "$item")"
+        else
+            log_error "Failed to copy action file: $(basename "$item")"
+        fi
+    done
+}
+
+setup_precommits() {
+    local project_path="$HOME/projects/$name"
+    local pre_commit_file="$project_path/.pre-commit-config.yaml"
+    readarray -t precommits < <(get_choice "pre-commits")
+    if [[ ! -z precommits ]]; then
+        {
+            echo "repos:"
+            for pre_commit in "${precommits[@]}"; do
+                if [[ -f "$pre_commit" ]]; then
+                    sed 's/^/  /' "$pre_commit"
+                    echo
+                else
+                    log_error "Pre-commit configuration not found: $pre_commit"
+                    return 1
+                fi
+            done
+        } > "$pre_commit_file"
+    fi
+
+    log_success "Pre-commit configuration created at $pre_commit_file"
+
+    if (cd "$project_path" && pre-commit install && pre-commit autoupdate); then
+        log_success "Pre-commit hooks installed successfully"
+    else
+        log_error "Failed to install pre-commit hooks"
+        return 1
+    fi
+}
+
+setup_repository() {
+    license=$(gh repo license list | awk '{print $1}' | fzf)
+    local cmd_line=("gh" "repo" "create" "$name")
+    [[ "${public}" == "true" ]] && cmd_line+=("--public") || cmd_line+=("--private")
+    [[ -n "${description:-}" ]] && cmd_line+=("--description" "$description")
+    [[ -n "${license:-}" ]] && cmd_line+=("--license" "$license")
+
+    if ! "${cmd_line[@]}"; then
+        log_error "Failed to create GitHub repository"
+        exit 1
+    fi
+
+    if [[ -z "$org" ]]; then
+        url="https://github.com/Jorgedavyd/$name"
+    else
+        url="https://github.com/$name"
+    fi
+
+    local pat="$HOME/projects/$name"
+    git clone "$url" "$pat"
+    setup_workflow
+    setup_actions
+    setup_precommits
+    {
+        cd "$pat" && git add . && git commit -m "first commit" && git push origin main
+    }
+
+    log_success "Project $name has been successfully set up"
+}
+
+main() {
+    [[ "${BASH_SOURCE[0]}" == "${0}" ]] && setup_repository
+}
+
+main "$@"

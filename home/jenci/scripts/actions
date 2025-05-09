@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+gh run list --json databaseId,displayTitle,workflowName | \
+jq -r '.[] | "\(.workflowName):\(.displayTitle):\(.databaseId)"' | \
+fzf --color=bg+:#282a36,bg:#44475a,fg:#f8f8f2,hl:#50fa7b,fg+:#50fa7b,hl+:#ff79c6,info:#8be9fd,prompt:#bd93f9,spinner:#ffb86c \
+--delimiter ':' \
+--preview 'gh run watch {3} && echo && gh run view {3} --log-failed | awk -F "Z " "{if (NF > 1) print \$2}"'

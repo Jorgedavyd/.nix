@@ -1,0 +1,10 @@
+theme = rose-pine
+shell-integration = bash
+
+font-family = "Liga SFMono Nerd Font"
+window-inherit-font-size = true
+font-size = 20
+
+background-opacity = 0.9
+window-padding-y = 10,0
+fullscreen = true

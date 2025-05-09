@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+[[ -z $1 ]] && selected=$(find ~/projects ~/.dotfiles ~/oym -type d -name '*.git' ! -path '*tmux*' -exec dirname {} + | fzf) || selected="$1"
+[[ -z $selected || ! -d $selected ]] && exit 0
+selected_name=$(basename "$selected" | tr . _)
+
+create_session() {
+    tmux new-session -d -s "$selected_name" -c "$selected"
+    tmux rename-window -t "$selected_name:0" "vi"
+    tmux send-keys -t "$selected_name:0" "vi ." C-m
+    tmux new-window -t "$selected_name:1" -n "term" -c "$selected"
+}
+
+if [[ -z $TMUX ]] && ! pgrep -x tmux > /dev/null; then
+    create_session
+fi
+
+if ! tmux has-session -t "$selected_name" 2>/dev/null; then
+    create_session
+fi
+
+if [[ -z "$TMUX" ]]; then
+    tmux attach-session -t "$selected_name"
+else
+    tmux switch-client -t "$selected_name"
+fi
