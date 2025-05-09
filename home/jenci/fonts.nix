@@ -23,8 +23,8 @@ let
         src = pkgs.fetchzip {
             url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CommitMono.zip";
             sha256 = "08vzlrx5wdz1czifrmjv5nl68fiq01ki8nb4xa53j153ar08qrgs";
+            stripRoot = false;
         };
-        stripRoot = false;
 
         installPhase = ''
       mkdir -p $out/share/fonts/CommitMono
