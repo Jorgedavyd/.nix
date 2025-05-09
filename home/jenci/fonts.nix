@@ -5,7 +5,7 @@ let
         version = "3.4.0";
         src = pkgs.fetchzip {
             url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/${name}.zip";
-            hash = sha256;
+            sha256 = sha256;
         };
 
         installPhase = ''
