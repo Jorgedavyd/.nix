@@ -5,6 +5,6 @@
         useGlobalPkgs = true;
         useUserPackages = true;
         backupFileExtension = "backup";
-        users.${username} = import ../../home/${username}.nix;
+        users.${username} = import ./../../home/${username}.nix;
     };
 }
