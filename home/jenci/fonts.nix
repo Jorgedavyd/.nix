@@ -14,9 +14,9 @@ let
         '';
     };
 
-    iosevka = fontFromURL "Iosevka" "sha256-0bz0jykmb5k9bippxz7hqz12iw772w9ik2ki1k8w6g4kiyxyxisi=";
-    jetbrains = fontFromURL "JetBrainsMono" "sha256-0g29gj9d6720grfr2vasnvdppzw4hycpfyd5di54d2p4mkrmzw3n=";
-    commit = fontFromURL "CommitMono" "sha256-08vzlrx5wdz1czifrmjv5nl68fiq01ki8nb4xa53j153ar08qrgs=";
+    iosevka = fontFromURL "Iosevka" "0bz0jykmb5k9bippxz7hqz12iw772w9ik2ki1k8w6g4kiyxyxisi";
+    jetbrains = fontFromURL "JetBrainsMono" "0g29gj9d6720grfr2vasnvdppzw4hycpfyd5di54d2p4mkrmzw3n";
+    commit = fontFromURL "CommitMono" "08vzlrx5wdz1czifrmjv5nl68fiq01ki8nb4xa53j153ar08qrgs";
 
 in {
     fonts.fontconfig.enable = true;
