@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   fontFromURL = name: hash: pkgs.stdenv.mkDerivation {
