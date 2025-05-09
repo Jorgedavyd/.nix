@@ -59,6 +59,6 @@ let
     wallpapers = builtins.map imageFromURL wallpaperSpec;
 
 in {
-    environment.systemPackages = wallpapers;
+    home.packages = wallpapers;
 }
 
