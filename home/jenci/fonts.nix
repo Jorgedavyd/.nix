@@ -18,7 +18,7 @@ let
     jetbrains = fontFromURL "JetBrainsMono" "0g29gj9d6720grfr2vasnvdppzw4hycpfyd5di54d2p4mkrmzw3n";
 
     commit = pkgs.stdenv.mkDerivation {
-        pname = name;
+        pname = "CommitMono";
         version = "3.4.0";
         src = pkgs.fetchzip {
             url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/CommitMono.zip";
