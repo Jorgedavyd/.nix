@@ -1,6 +1,6 @@
-{ pkgs, inputs, username, ... }:
+{ pkgs, inputs, outputs, username, ... }:
 {
-    imports = [ home-manager.nixosModules.home-manager ];
+    imports = [ inputs.home-manager.nixosModules.home-manager ];
     home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
