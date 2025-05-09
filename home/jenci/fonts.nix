@@ -3,7 +3,7 @@ let
     fontFromURL = name: sha256: pkgs.stdenv.mkDerivation {
         pname = name;
         version = "3.4.0";
-        src = builtins.fetchzip {
+        src = pkgs.fetchzip {
             url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/${name}.zip";
             sha256 = sha256;
         };
