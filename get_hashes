@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 output_file="home/jenci/swww.nix"
-urls = (
+urls=(
     "https://github.com/HomeomorphicHooligan/arch-minimal-wallpapers/blob/main/wallpapers/full-hd/rosepine.png?raw=true"
     "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/alena-aenami-horizon.png"
     "https://raw.githubusercontent.com/DenverCoder1/minimalistic-wallpaper-collection/main/images/alena-aenami-timeless.jpg"
