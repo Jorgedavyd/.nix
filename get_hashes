@@ -15,6 +15,6 @@ echo "" >> "$output_file"
 echo "# === Prefetched wallpaper hashes ===" >> "$output_file"
 
 for url in "${urls[@]}"; do
-  hash=$(nix-prefetch-url --unpack "$url" 2>/dev/null)
+  hash=$(nix-prefetch-url "$url" 2>/dev/null)
   echo "{ url = \"$url\"; hash = \"$hash\"; }," >> "$output_file"
 done
