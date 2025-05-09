@@ -1,6 +1,6 @@
-{ username, ... }:
+{ ... }:
 let
-    homedirectory = "/home/${username}";
+    homedirectory = "/home/jenci";
 in {
     xdg = {
         enable = true;

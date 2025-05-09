@@ -1,9 +1,9 @@
-{ config, pkgs, inputs, username, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
     programs.home-manager.enable = true;
-    home.username = username;
-    home.homeDirectory = "/home/${username}";
+    home.username = "jenci";
+    home.homeDirectory = "/home/jenci";
     home.stateVersion = "24.11";
     home.sessionVariables.TERM = "ghostty";
     imports = [

@@ -1,4 +1,4 @@
-{ pkgs, username, ...}:
+{ pkgs, ...}:
 
 {
     home.packages = with pkgs; [
@@ -18,7 +18,7 @@
     programs = {
         firefox = {
             enable = true;
-            profiles.${username} = {
+            profiles.jenci = {
                 isDefault = true;
                 userChrome = ''
           @import "${builtins.fetchGit {
