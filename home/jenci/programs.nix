@@ -14,6 +14,11 @@
         rose-pine-cursor
     ];
 
+    fonts.fontconfig.enable = true;
+    home.packages = with pkgs; [
+        (nerdfonts.override { fonts = ["JetBrains" "Iosevka" "CommitMono" ]; })
+    ];
+
     programs = {
         firefox = {
             enable = true;

@@ -10,7 +10,6 @@
         ./shell.nix
         ./theme.nix
         ./xdg.nix
-        ./fonts.nix
         ./swww.nix
     ];
 }
