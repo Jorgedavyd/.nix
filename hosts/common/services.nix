@@ -19,8 +19,8 @@ pkgs,
         onedrive.enable = true;
         xserver = {
             enable = true;
-            xserver.displayManager.gdm.enable = true;
-            xserver.desktopManager.gnome.enable = true;
+            displayManager.gdm.enable = true;
+            desktopManager.gnome.enable = true;
         };
     };
 }
