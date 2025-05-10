@@ -4,7 +4,7 @@
         yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr gh
         traceroute nettools nmap
         texliveFull zathura
-        hyprland hyprlock rofi grim grimblast swww waybar starship wl-clipboard
+        hyprlock rofi grim grimblast swww waybar starship wl-clipboard
         xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xdg-desktop-portal
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
@@ -18,6 +18,13 @@
     fonts.fontconfig.enable = true;
 
     programs = {
+        hyprland = {
+            enable = true;
+            xwayland = {
+                hidpi = true;
+                enable = true;
+            };
+        };
         firefox = {
             enable = true;
             profiles.jenci = {
