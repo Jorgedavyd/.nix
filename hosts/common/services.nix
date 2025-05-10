@@ -17,5 +17,10 @@ pkgs,
         };
         openssh.enable = true;
         onedrive.enable = true;
+        greetd = {
+            enable = true;
+            settings.default_session.command = "Hyprland";
+            settings.default_session.user = "jenci";
+        };
     };
 }
