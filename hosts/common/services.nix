@@ -25,4 +25,9 @@ pkgs,
             };
         };
     };
+    security.pam.services.hyrplock = {
+        text = ''
+            auth include login
+            '';
+    };
 }
