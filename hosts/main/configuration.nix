@@ -18,6 +18,4 @@ username,
         ./networking.nix
         ./filesystem.nix
     ];
-
-    system.stateVersion = "24.11";
 }

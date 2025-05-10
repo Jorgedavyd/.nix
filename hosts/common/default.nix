@@ -15,4 +15,5 @@ lib,
         ./user.nix
         ./home-manager.nix
     ];
+    system.stateVersion = "24.11";
 }

@@ -2,6 +2,10 @@
 let
     homedirectory = "/home/jenci";
 in {
+    systemd.user.extraConfig = ''
+      RuntimeDirectory=xdg
+      RuntimeDirectoryMode=0700
+    '';
     xdg = {
         enable = true;
         configHome = "${homedirectory}/.config";
@@ -32,5 +36,11 @@ in {
                 XDG_PROJECTS_DIR = "${homedirectory}/projects";
             };
         };
+    };
+    environment.variables = {
+        XDG_CONFIG_HOME = "${homedirectory}/.config";
+        XDG_DATA_HOME = "${homedirectory}/.local/share";
+        XDG_CACHE_HOME = "${homedirectory}/.cache";
+        XDG_STATE_HOME = "${homedirectory}/.local/state";
     };
 }

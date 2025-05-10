@@ -4,10 +4,10 @@
         yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr gh
         traceroute nettools nmap
         texliveFull zathura
-        hyprland xdg-desktop-portal-hyprland hyprlock rofi grim grimblast swww waybar starship wl-clipboard
+        hyprland hyprlock rofi grim grimblast swww waybar starship wl-clipboard
+        xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-utils xdg-user-dirs xdg-desktop-portal
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
-        xdg-utils xdg-user-dirs
         libsForQt5.qtstyleplugin-kvantum
         rose-pine-gtk-theme
         rose-pine-icon-theme

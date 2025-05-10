@@ -25,8 +25,8 @@ let
             };
 
             installPhase = ''
-                mkdir -p $out/share/wallpapers
-                cp ${src} $out/share/wallpapers/${pname}
+                mkdir -p $out/state/wallpapers
+                cp ${src} $out/state/wallpapers/${pname}
             '';
         };
     wallpapers = builtins.map imageFromURL wallpaperSpec;

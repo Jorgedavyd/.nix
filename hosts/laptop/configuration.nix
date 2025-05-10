@@ -18,6 +18,4 @@ timezone,
         ./filesystem.nix
         ./services.nix
     ];
-
-    system.stateVersion = "24.11";
 }
