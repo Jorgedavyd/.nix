@@ -3,40 +3,6 @@ case $- in
     *) return;;
 esac
 
-export OSH=~/.oh-my-bash
-
-OSH_THEME="robbyrussell"
-OMB_CASE_SENSITIVE="true"
-DISABLE_AUTO_UPDATE="true"
-OMB_USE_SUDO=false
-OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
-
-completions=(
-  git
-  composer
-  ssh
-  pip
-)
-
-plugins=(
-  git
-  bashmarks
-)
-
-if [ "$DISPLAY" ] || [ "$SSH" ]; then
-    plugins+=(tmux-autoattach)
-fi
-
-## oh-my-bash support
-source "$OSH"/oh-my-bash.sh
-
-## bash completion engines
-if [ -d "$HOME/.bash_completion" ]; then
-  for file in "$HOME/.bash_completion/"*; do
-    [ -f "$file" ] && source "$file"
-  done
-fi
-
 ## setting up auto-integration with bash
 if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
     builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
