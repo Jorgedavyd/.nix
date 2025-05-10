@@ -1,6 +1,6 @@
 _:
 let
-    homeDirectory = "/home/jenci";
+    homedirectory = "/home/jenci";
 in {
     systemd.user.extraConfig = ''
       RuntimeDirectory=xdg
