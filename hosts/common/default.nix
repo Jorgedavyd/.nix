@@ -13,7 +13,6 @@ lib,
         ./services.nix
         ./user.nix
         ./home-manager.nix
-        ./xdg.nix
     ];
     system.stateVersion = "24.11";
 }
