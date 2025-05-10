@@ -16,9 +16,5 @@
         };
         openssh.enable = true;
         onedrive.enable = true;
-        displayManager = {
-            enable = true;
-            defaultSession = "hyprland";
-        };
     };
 }
