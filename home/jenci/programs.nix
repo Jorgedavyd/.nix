@@ -18,13 +18,6 @@
     fonts.fontconfig.enable = true;
 
     programs = {
-        hyprland = {
-            enable = true;
-            xwayland = {
-                hidpi = true;
-                enable = true;
-            };
-        };
         firefox = {
             enable = true;
             profiles.jenci = {

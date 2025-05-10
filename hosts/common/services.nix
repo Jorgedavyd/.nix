@@ -17,17 +17,5 @@ pkgs,
         };
         openssh.enable = true;
         onedrive.enable = true;
-        xserver = {
-            enable = true;
-            displayManager.gdm = {
-                enable = true;
-                wayland = true;
-            };
-        };
-    };
-    security.pam.services.hyrplock = {
-        text = ''
-            auth include login
-            '';
     };
 }

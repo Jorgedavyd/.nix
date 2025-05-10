@@ -13,6 +13,7 @@ modulesPath,
         ./packages.nix
         ./services.nix
         ./user.nix
+        ./wm.nix
         ./home-manager.nix
     ];
     system.stateVersion = "24.11";
