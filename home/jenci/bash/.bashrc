@@ -37,5 +37,20 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+## Wayland setup
+export CLUTTER_BACKEND=wayland
+export NIXOS_OZONE_WL=1
+export SDL_VIDEODRIVER=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export QT_QPA_PLATFORM=wayland
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export HYPRLAND_NO_SD_NOTIFY=0
+export MOZ_ENABLE_WAYLAND=1
+export GDK_BACKEND=wayland
+export WLR_NO_HARDWARE_CURSORS=1
+
 command -v direnv >/dev/null && eval "$(direnv hook bash)"
 PATH="$PATH:$HOME/.local/scripts/"
