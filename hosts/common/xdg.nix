@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 let
     homedirectory = "/home/jenci";
 in {
