@@ -17,5 +17,10 @@ pkgs,
         };
         openssh.enable = true;
         onedrive.enable = true;
+        xserver = {
+            enable = true;
+            xserver.displayManager.gdm.enable = true;
+            xserver.desktopManager.gnome.enable = true;
+        };
     };
 }
