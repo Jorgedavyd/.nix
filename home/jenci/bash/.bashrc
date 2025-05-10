@@ -33,10 +33,6 @@ alias vi='nvim'
 
 eval "$(starship init bash)"
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 ## Wayland setup
 export CLUTTER_BACKEND=wayland
 export NIXOS_OZONE_WL=1
