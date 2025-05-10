@@ -17,5 +17,12 @@ pkgs,
         };
         openssh.enable = true;
         onedrive.enable = true;
+        xserver = {
+            enable = true;
+            displayManager.gdm = {
+                enable = true;
+                wayland = true;
+            };
+        };
     };
 }
