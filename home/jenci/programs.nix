@@ -12,7 +12,7 @@
         rose-pine-gtk-theme
         rose-pine-icon-theme
         rose-pine-cursor
-        (nerdfonts.override { fonts = ["JetBrains" "Iosevka" "CommitMono" ]; })
+        (nerdfonts.override { fonts = ["JetBrainsMono" "Iosevka" "CommitMono" ]; })
     ];
 
     fonts.fontconfig.enable = true;
