@@ -17,5 +17,6 @@ pkgs,
         };
         openssh.enable = true;
         onedrive.enable = true;
+        seatd.enable = true;
     };
 }
