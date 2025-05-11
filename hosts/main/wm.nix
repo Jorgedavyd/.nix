@@ -1,16 +1,5 @@
-{ pkgs, ... }: {
-    wayland.windowManager.hyprland = {
-        enable = true;
-        xwayland.enable = true;
-        systemd = {
-            enable = true;
-            enableXdgAutostart = true;
-            variables = [ "--all" ];
-        };
-        package = null;
-        portalPackage = null;
-    };
-    home.sessionVariables = {
+_: {
+    environment.sessionVariables = {
         AQ_DRM_DEVICES="/dev/dri/card0";
         GBM_BACKEND="nvidia-drm";
         __GL_VRR_ALLOWED="0";

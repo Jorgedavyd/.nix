@@ -16,6 +16,7 @@ username,
         ./hardware.nix
         ./cuda.nix
         ./networking.nix
+        ./wm.nix
         ./filesystem.nix
     ];
 }

@@ -1,7 +1,7 @@
 { pkgs, ...}:
 {
     home.packages = with pkgs; [
-        yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr gh
+        yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
         traceroute nettools nmap
         texliveFull zathura
         hyprlock rofi grim grimblast swww waybar starship wl-clipboard
