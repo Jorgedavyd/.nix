@@ -7,6 +7,5 @@
             enableXdgAutostart = true;
             variables = [ "--all" ];
         };
-        package = null;
     };
 }
