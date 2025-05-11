@@ -7,9 +7,8 @@ lib,
 
 {
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-    boot.initrd.kernelModules = [ ];
+    boot.initrd.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     boot.initrd.systemd.enable = true;
-    boot.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     boot.extraModulePackages = [ ];
 
     ## NVIDIA configuration
@@ -21,11 +20,14 @@ lib,
         };
         open = false;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.latest;
+        package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
     boot.extraModprobeConfig = ''
     options nvidia-drm modeset=1
     options nvidia-drm fbdev=1
+    options nvidia NVreg_UsePageAttributeTable=1
+    options nvidia NVreg_PreserveVideoMemoryAllocations=1
+    options nvidia NVreg_TemporaryFilePath=/var/tmp
     '';
     boot.blacklistedKernelModules = [ "nouveau" "nvidiafb" ];
 
@@ -33,9 +35,6 @@ lib,
     hardware.firmware = [ pkgs.linux-firmware ];
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     boot.kernelParams = [
-        "acpi.debug_level=0x2"
-        "acpi.debug_layer=0xFFFFFFFF"
         "acpi_osi=Linux"
-        "pcie_port_pm=off"
     ];
 }
