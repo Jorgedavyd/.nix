@@ -35,6 +35,9 @@ lib,
     hardware.firmware = [ pkgs.linux-firmware ];
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     boot.kernelParams = [
+        "acpi.debug_level=0x2"
+        "acpi.debug_layer=0xFFFFFFFF"
         "acpi_osi=Linux"
+        "pcie_port_pm=off"
     ];
 }
