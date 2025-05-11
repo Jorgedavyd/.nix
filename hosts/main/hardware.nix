@@ -12,13 +12,13 @@ lib,
     boot.kernelModules = [ "kvm-amd" ];
     boot.extraModulePackages = [ ];
     hardware.nvidia = {
-        modesetting.enable = true;
-        powerManagement = {
-            enable = false;
-            finegrained = false;
-        };
-        open = false;
-        nvidiaSettings = true;
+        # modesetting.enable = true;
+        # powerManagement = {
+        # enable = false;
+        # finegrained = false;
+        # };
+        # open = false;
+        # nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
