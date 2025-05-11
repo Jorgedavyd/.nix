@@ -15,7 +15,6 @@ username,
         ../common/default.nix
         ./hardware.nix
         ./cuda.nix
-        ./services.nix
         ./networking.nix
         ./filesystem.nix
     ];
