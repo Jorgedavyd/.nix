@@ -1,4 +1,5 @@
 _: {
+    programs.hyprland.enable = true;
     environment.sessionVariables = {
         AQ_DRM_DEVICES="/dev/dri/card0";
         GBM_BACKEND="nvidia-drm";
