@@ -32,5 +32,16 @@ in {
                 XDG_PROJECTS_DIR = "${homedirectory}/projects";
             };
         };
+        portal = {
+            enable = true;
+            extraPortals = with pkgs; [
+                xdg-desktop-portal-hyprland
+            ];
+            config = {
+                common = {
+                    default = "hyprland";
+                };
+            };
+        };
     };
 }
