@@ -32,6 +32,5 @@ in {
                 XDG_PROJECTS_DIR = "${homedirectory}/projects";
             };
         };
-        portal.enable = true;
     };
 }
