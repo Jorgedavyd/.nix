@@ -8,7 +8,7 @@
     imports = [
         ./programs.nix
         ./shell.nix
-        ./theme.nix
+        # ./theme.nix
         ./xdg.nix
         ./swww.nix
     ];
