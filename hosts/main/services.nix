@@ -1,6 +1,6 @@
 _: {
     services.xserver = {
         enable = false;
-        videoDrivers = [ "modesetting" ];
+        videoDrivers = [ "nvidia" ];
     };
 }

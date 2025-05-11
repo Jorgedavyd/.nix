@@ -10,6 +10,8 @@ lib,
     boot.initrd.systemd.enable = true;
     boot.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     boot.extraModulePackages = [ ];
+
+    ## NVIDIA configuration
     hardware.nvidia = {
         modesetting.enable = true;
         powerManagement = {
@@ -23,10 +25,16 @@ lib,
     boot.extraModprobeConfig = ''
     options nvidia-drm modeset=1
     options nvidia-drm fbdev=1
-    options nvidia NVreg_UsePageAttributeTable=1
-    options nvidia NVreg_PreserveVideoMemoryAllocations=1
-    options nvidia NVreg_TemporaryFilePath=/var/tmp
-    options nvidia NVreg_EnableS0ixPowerManagement=1
     '';
+    boot.blacklistedKernelModules = [ "nouveau" "nvidiafb" ];
+
+    ## Linux firmware
+    hardware.firmware = [ pkgs.linux-firmware ];
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    boot.kernelParams = [
+        "acpi.debug_level=0x2"
+        "acpi.debug_layer=0xFFFFFFFF"
+        "acpi_osi=Linux"
+        "pcie_port_pm=off"
+    ];
 }
