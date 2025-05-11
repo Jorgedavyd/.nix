@@ -11,6 +11,5 @@
         ./theme.nix
         ./xdg.nix
         ./swww.nix
-        ./wayland.nix
     ];
 }

@@ -12,6 +12,7 @@
         size = 24;
         package = pkgs.rose-pine-cursor;
     };
+
     gtk = {
         enable = true;
         font = {
