@@ -8,11 +8,11 @@
         xdg-desktop-portal xdg-desktop-portal-hyprland xdg-utils xdg-user-dirs
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
-        # xdg-desktop-portal-gtk
-        # libsForQt5.qtstyleplugin-kvantum
-        # rose-pine-gtk-theme
-        # rose-pine-icon-theme
-        # rose-pine-cursor
+        xdg-desktop-portal-gtk
+        libsForQt5.qtstyleplugin-kvantum
+        rose-pine-gtk-theme
+        rose-pine-icon-theme
+        rose-pine-cursor
         (nerdfonts.override { fonts = ["JetBrainsMono" "Iosevka" "CommitMono" ]; })
     ];
 
