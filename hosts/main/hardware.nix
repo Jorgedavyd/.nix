@@ -10,7 +10,7 @@ lib,
     boot.initrd.kernelModules = [ ];
     boot.initrd.systemd.enable = true;
     boot.kernelModules = [ "kvm-amd" ];
-    boot.extraModulePackages = [ "nvidia" ];
+    boot.extraModulePackages = [ ];
     hardware.nvidia = {
         modesetting.enable = true;
         powerManagement = {
