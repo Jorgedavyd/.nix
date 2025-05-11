@@ -22,7 +22,7 @@
             settings = {
                 username = "jenci";
                 hostname = "jenci-nixos";
-                kernelpackages = pkgs.linuxKernel.linux_6_6;
+                kernelpackages = pkgs.linuxPackages_latest;
                 cudapackages = pkgs.cudaPackages;
                 timezone = "America/Asuncion";
                 locale = "en_US.UTF-8";
