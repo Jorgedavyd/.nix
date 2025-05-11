@@ -13,7 +13,7 @@ lib,
     hardware.nvidia = {
         modesetting.enable = true;
         powerManagement = {
-            enable = true;
+            enable = false;
             finegrained = false;
         };
         open = false;
@@ -23,10 +23,10 @@ lib,
     boot.extraModprobeConfig = ''
     options nvidia-drm modeset=1
     options nvidia-drm fbdev=1
+    options nvidia NVreg_UsePageAttributeTable=1
+    options nvidia NVreg_PreserveVideoMemoryAllocations=1
+    options nvidia NVreg_TemporaryFilePath=/var/tmp
+    options nvidia NVreg_EnableS0ixPowerManagement=1
     '';
-    # options nvidia NVreg_UsePageAttributeTable=1
-    # options nvidia NVreg_PreserveVideoMemoryAllocations=1
-    # options nvidia NVreg_TemporaryFilePath=/var/tmp
-    # options nvidia NVreg_EnableS0ixPowerManagement=1
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
