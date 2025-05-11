@@ -35,13 +35,14 @@ in {
         portal = {
             enable = true;
             extraPortals = with pkgs; [
+                xdg-desktop-portal
                 xdg-desktop-portal-gtk
             ];
-            config = {
-                common = {
-                    default = "gtk";
-                };
-            };
+            configPackages = [
+                xdg-desktop-portal
+                xdg-desktop-portal-gtk
+                xdg-desktop-portal-hyprland
+            ];
         };
     };
 }
