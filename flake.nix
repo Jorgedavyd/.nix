@@ -2,6 +2,7 @@
     description = "Jenci's NixOS configuration for main-pc and laptop";
 
     inputs = {
+        hyprland.url = "github:hyprwm/Hyprland";
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
         home-manager = {
             url = "github:nix-community/home-manager/release-24.11";
@@ -21,7 +22,7 @@
             settings = {
                 username = "jenci";
                 hostname = "jenci-nixos";
-                kernelpackages = pkgs.linuxPackages_latest;
+                kernelpackages = pkgs.linuxKernel.linux_6_6;
                 cudapackages = pkgs.cudaPackages;
                 timezone = "America/Asuncion";
                 locale = "en_US.UTF-8";

@@ -1,5 +1,10 @@
-_: {
-    programs.hyprland.enable = true;
+{ inputs, pkgs, ... }: {
+    programs.hyprland = {
+        enable = true;
+        xwayland = true;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
     environment.sessionVariables = {
         AQ_DRM_DEVICES="/dev/dri/card0";
         GBM_BACKEND="nvidia-drm";

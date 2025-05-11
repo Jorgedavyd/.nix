@@ -8,7 +8,6 @@
     imports = [
         ./programs.nix
         ./shell.nix
-        ./wm.nix
         ./theme.nix
         ./xdg.nix
         ./swww.nix

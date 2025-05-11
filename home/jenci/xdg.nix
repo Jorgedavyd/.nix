@@ -38,7 +38,7 @@ in {
                 xdg-desktop-portal
                 xdg-desktop-portal-gtk
             ];
-            configPackages = [
+            configPackages = with pkgs; [
                 xdg-desktop-portal
                 xdg-desktop-portal-gtk
                 xdg-desktop-portal-hyprland

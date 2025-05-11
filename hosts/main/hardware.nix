@@ -7,8 +7,9 @@ lib,
 
 {
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-    boot.initrd.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     boot.initrd.systemd.enable = true;
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     boot.extraModulePackages = [ ];
 
     ## NVIDIA configuration
