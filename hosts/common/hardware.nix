@@ -1,6 +1,7 @@
 {
 pkgs,
 modulesPath,
+lib,
 ...
 }:
 
