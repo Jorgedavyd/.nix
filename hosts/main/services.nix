@@ -1,7 +1,7 @@
 _: {
     services.xserver = {
         enable = true;
-        videosDrivers = [ "nvidia" "amdgpu" ];
+        videoDrivers = [ "nvidia" "amdgpu" ];
         displayManager.gdm = {
             enable = true;
             wayland = true;
