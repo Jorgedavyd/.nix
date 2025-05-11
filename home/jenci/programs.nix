@@ -5,7 +5,7 @@
         traceroute nettools nmap
         texliveFull zathura
         hyprlock rofi grim grimblast swww waybar starship wl-clipboard
-        xdg-desktop-portal-hyprland xdg-utils xdg-user-dirs
+        xdg-desktop-portal xdg-desktop-portal-hyprland xdg-utils xdg-user-dirs
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
         # xdg-desktop-portal-gtk
