@@ -25,8 +25,8 @@ let
             };
 
             installPhase = ''
-                mkdir -p $out/state/wallpapers
-                cp ${src} $out/state/wallpapers/${pname}
+                mkdir -p /home/jenci/.local/state/wallpapers
+                cp ${src} /home/jenci/.local/state/wallpapers
             '';
         };
     wallpapers = builtins.map imageFromURL wallpaperSpec;
