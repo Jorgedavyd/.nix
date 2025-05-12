@@ -22,13 +22,4 @@
             name = "rose-pine";
         };
     };
-
-    qt = {
-        enable = true;
-        platformTheme.name = "gtk";
-        style = {
-            name = "kvantum";
-            package = pkgs.libsForQt5.qtstyleplugin-kvantum;
-        };
-    };
 }
