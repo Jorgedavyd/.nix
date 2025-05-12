@@ -6,7 +6,7 @@ pkgs,
 {
     environment.systemPackages = with pkgs; [
         vim curl wget git nix dconf gh
-        hyprland qt5.qtwayland qt5ct libva
-        libva-nvidia-driver xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
+        hyprland libsForQt5.qt5.qtwayland libsForQt5.qt5ct libva
+        xdg-desktop-portal-hyprland xdg-desktop-portal-gtk
     ];
 }
