@@ -9,5 +9,6 @@
                 };
             };
         };
+        xserver.enable = true;
     };
 }

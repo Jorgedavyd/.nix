@@ -13,10 +13,11 @@ username,
 {
     imports = [
         ../common/default.nix
-        ./hardware.nix
+        ./hardware-configuration.nix
         ./cuda.nix
         ./networking.nix
         ./wm.nix
-        ./filesystem.nix
+        ./nvidia.nix
+        ./services.nix
     ];
 }

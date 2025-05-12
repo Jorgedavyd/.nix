@@ -1,8 +1,0 @@
-{
-kernelpackages,
-...
-}:
-
-{
-    boot.kernelPackages = kernelpackages;
-}

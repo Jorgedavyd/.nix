@@ -12,26 +12,6 @@ lib,
     boot.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
     boot.extraModulePackages = [ ];
 
-    ## NVIDIA configuration
-    hardware.nvidia = {
-        modesetting.enable = true;
-        powerManagement = {
-            enable = false;
-            finegrained = false;
-        };
-        open = false;
-        nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
-    boot.extraModprobeConfig = ''
-    options nvidia-drm modeset=1
-    options nvidia-drm fbdev=1
-    options nvidia NVreg_UsePageAttributeTable=1
-    options nvidia NVreg_PreserveVideoMemoryAllocations=1
-    options nvidia NVreg_TemporaryFilePath=/var/tmp
-    '';
-    boot.blacklistedKernelModules = [ "nouveau" "nvidiafb" ];
-
     ## Linux firmware
     hardware.firmware = [ pkgs.linux-firmware ];
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
@@ -41,4 +21,23 @@ lib,
         "acpi_osi=Linux"
         "pcie_port_pm=off"
     ];
+    fileSystems."/" = {
+        device = "/dev/disk/by-label/NIXROOT";
+        fsType = "ext4";
+        options = [ "defaults" "noatime" ];
+    };
+
+    fileSystems."/boot" = {
+        device = "/dev/disk/by-label/NIXBOOT";
+        fsType = "vfat";
+        options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+    fileSystems."/data" = {
+        device = "/dev/disk/by-label/NIXDATA";
+        fsType = "ext4";
+        options = [ "defaults" "noatime" ];
+    };
+
+    swapDevices = [ ];
 }

@@ -9,7 +9,6 @@ modulesPath,
     imports = [
         ./hardware.nix
         ./networking.nix
-        ./kernel.nix
         ./packages.nix
         ./services.nix
         ./user.nix
