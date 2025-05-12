@@ -16,8 +16,6 @@ in {
             "tmux/tmux.conf".source = ./tmux/tmux.conf;
             "zathura/zathurarc".source = ./zathura/zathurarc;
             "hypr".source = ./hypr;
-            "Kvantum/kvantum.kvconfig".source = ./Kvantum/kvantum.kvconfig;
-            "Kvantum/KvLibadwaita-RosePine/KvLibadwaita-RosePine.kvconfig".source = ./Kvantum/KvLibadwaita-RosePine/KvLibadwaita-RosePine.kvconfig;
         };
         userDirs = {
             enable = true;
@@ -31,17 +29,6 @@ in {
             extraConfig = {
                 XDG_PROJECTS_DIR = "${homedirectory}/projects";
             };
-        };
-        portal = {
-            enable = true;
-            extraPortals = with pkgs; [
-                xdg-desktop-portal
-                xdg-desktop-portal-gtk
-            ];
-            configPackages = with pkgs; [
-                xdg-desktop-portal
-                xdg-desktop-portal-gtk
-            ];
         };
     };
 }
