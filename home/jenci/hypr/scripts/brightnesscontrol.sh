@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/run/current-system/sw/bin/bash
 
 function print_error() {
 cat << "EOF"
