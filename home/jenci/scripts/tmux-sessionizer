@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 [[ -z $1 ]] && selected=$(find ~/projects ~/.dotfiles ~/oym -type d -name '*.git' ! -path '*tmux*' -exec dirname {} + | fzf) || selected="$1"
 [[ -z $selected || ! -d $selected ]] && exit 0

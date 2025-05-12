@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+
     home.pointerCursor = {
         name = "rose-pine-cursor";
         gtk.enable = true;
@@ -23,4 +24,12 @@
         };
     };
 
+    qt = {
+        enable = true;
+        platformTheme.name = "gtk";
+        style = {
+            name = "kvantum";
+            package = pkgs.libsForQt5.qtstyleplugin-kvantum;
+        };
+    };
 }

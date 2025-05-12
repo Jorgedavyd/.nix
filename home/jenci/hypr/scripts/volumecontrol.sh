@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/run/current-system/sw/bin/bash
 
 ScrDir=`dirname "$(realpath "$0")"`
 

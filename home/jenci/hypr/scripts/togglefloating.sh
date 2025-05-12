@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash
 
 floating=$(hyprctl activewindow -j | jq '.floating')
 window=$(hyprctl activewindow -j | jq '.initialClass' | tr -d "\"")

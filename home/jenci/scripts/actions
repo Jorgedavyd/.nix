@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 gh run list --json databaseId,displayTitle,workflowName | \
 jq -r '.[] | "\(.workflowName):\(.displayTitle):\(.databaseId)"' | \
 fzf --color=bg+:#282a36,bg:#44475a,fg:#f8f8f2,hl:#50fa7b,fg+:#50fa7b,hl+:#ff79c6,info:#8be9fd,prompt:#bd93f9,spinner:#ffb86c \

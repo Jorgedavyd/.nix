@@ -4,8 +4,8 @@
         yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
         traceroute nettools nmap
         texliveFull zathura
-        hyprlock rofi grim grimblast swww waybar starship wl-clipboard
-        xdg-desktop-portal xdg-utils xdg-user-dirs
+        hyprlock wofi grim grimblast swww waybar starship wl-clipboard
+        xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
         xdg-desktop-portal-gtk

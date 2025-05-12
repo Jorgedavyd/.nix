@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash
 
 function close_special_workspace() {
   special_open=`hyprctl monitors -j | jq ".[0].specialWorkspace.name" | grep "special"`

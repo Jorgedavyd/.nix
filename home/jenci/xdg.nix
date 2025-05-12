@@ -11,11 +11,12 @@ in {
         configFile = {
             "nvim".source = ./nvim;
             "starship.toml".source = ./starship/starship.toml;
-            "waybar".source = ./waybar;
             "ghostty/config".source = ./ghostty/config;
             "tmux/tmux.conf".source = ./tmux/tmux.conf;
             "zathura/zathurarc".source = ./zathura/zathurarc;
             "hypr".source = ./hypr;
+            "waybar".source = ./waybar;
+            "wofi".source = ./wofi;
         };
         userDirs = {
             enable = true;
@@ -29,6 +30,18 @@ in {
             extraConfig = {
                 XDG_PROJECTS_DIR = "${homedirectory}/projects";
             };
+        };
+        portal = {
+            enable = true;
+            extraPortals = with pkgs; [
+                xdg-desktop-portal
+                xdg-desktop-portal-gtk
+            ];
+            configPackages = with pkgs; [
+                xdg-desktop-portal
+                xdg-desktop-portal-gtk
+                xdg-desktop-portal-hyprland
+            ];
         };
     };
 }

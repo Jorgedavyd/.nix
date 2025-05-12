@@ -3,7 +3,7 @@
     users.users.${username} = {
         isNormalUser = true;
         home = "/home/${username}";
-        extraGroups = [ "wheel" "networkmanager" "video" "seat" ];
+        extraGroups = [ "wheel" "networkmanager" "video" "seat" "network" "render" ];
         shell = pkgs.bash;
     };
     time.timeZone = timezone;
