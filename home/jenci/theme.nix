@@ -22,4 +22,5 @@
             name = "rose-pine";
         };
     };
+
 }
