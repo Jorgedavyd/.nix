@@ -1,12 +1,5 @@
-{
-lib,
-hostname,
-...
-}:
-
-{
+{ hostname, ... }: {
     networking = {
-        useDHCP = lib.mkDefault true;
         networkmanager.enable = true;
         firewall.enable = true;
         # firewall.allowedTCPPorts = [ 80 ]; Set this up

@@ -1,11 +1,4 @@
-{
-pkgs,
-modulesPath,
-lib,
-...
-}:
-
-{
+_: {
     hardware.pulseaudio.enable = false;
     hardware.graphics = {
         enable = true;

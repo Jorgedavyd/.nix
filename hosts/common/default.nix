@@ -8,6 +8,7 @@ modulesPath,
 {
     imports = [
         ./hardware.nix
+        ./boot.nix
         ./networking.nix
         ./packages.nix
         ./services.nix

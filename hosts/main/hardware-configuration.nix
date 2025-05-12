@@ -1,30 +1,21 @@
 {
 config,
-pkgs,
 lib,
+pkgs,
+modulesPath,
 ...
 }:
 
 {
+    imports = [ (modulesPath + "/installer/scan/not-detected.sh") ];
     boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-    boot.initrd.systemd.enable = true;
     boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-amd" "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+    boot.kernelModules = [ "kvm-amd" ];
     boot.extraModulePackages = [ ];
 
-    ## Linux firmware
-    hardware.firmware = [ pkgs.linux-firmware ];
-    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    boot.kernelParams = [
-        "acpi.debug_level=0x2"
-        "acpi.debug_layer=0xFFFFFFFF"
-        "acpi_osi=Linux"
-        "pcie_port_pm=off"
-    ];
     fileSystems."/" = {
         device = "/dev/disk/by-label/NIXROOT";
         fsType = "ext4";
-        options = [ "defaults" "noatime" ];
     };
 
     fileSystems."/boot" = {
@@ -36,8 +27,11 @@ lib,
     fileSystems."/data" = {
         device = "/dev/disk/by-label/NIXDATA";
         fsType = "ext4";
-        options = [ "defaults" "noatime" ];
     };
 
     swapDevices = [ ];
+
+    networking.useDHCP = lib.mkDefault true;
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
