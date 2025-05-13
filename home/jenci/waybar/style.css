@@ -43,8 +43,6 @@ window#waybar.hidden {
     border-bottom: 3px solid #ffffff;
 }
 
-/* Common Widget Styles */
-
 #custom-updates,
 #window,
 #workspaces,
@@ -59,39 +57,30 @@ window#waybar.hidden {
     background-color: #232136;
 }
 
-/* Individual Widget Styles */
-/* In order of the placement on screen */
-
-/* Clock instance which displays the date */
 #clock.date {
     color: #eb6f92;
     margin-right: 8px;
 }
 
-/* Pacman Updates */
 #custom-updates {
     color: #f6c177;
     font-weight: 600;
 }
 
-/* CPU Usage */
 #cpu {
    padding: 0 15px;
    color: #ea9a97;
 }
 
-/* Memory Usage */
 #memory {
    padding: 0 15px;
    color: #3e8fb0;
 }
 
-/* Pulseaudio Widget */
 #pulseaudio {
     color: #9ccfd8;
 }
 
-/* Time Clock */
 #clock {
     color: #c4a7e7;
     margin-right: 0;
