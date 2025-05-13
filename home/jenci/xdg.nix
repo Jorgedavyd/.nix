@@ -16,7 +16,7 @@ in {
             "zathura/zathurarc".source = ./zathura/zathurarc;
             "hypr".source = ./hypr;
             "waybar".source = ./waybar;
-            "wofi".source = ./wofi;
+            "rofi".source = ./rofi;
         };
         userDirs = {
             enable = true;
