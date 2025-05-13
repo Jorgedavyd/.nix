@@ -10,6 +10,7 @@
         obsidian ghostty tmux
         xdg-desktop-portal-gtk bibata-cursors
         (nerdfonts.override { fonts = ["JetBrainsMono" "Iosevka" "CommitMono" ]; })
+	onedrive
     ];
 
     fonts.fontconfig.enable = true;
