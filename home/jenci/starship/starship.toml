@@ -1,5 +1,5 @@
 format = '''
-[fn](bold gold) [cmd](bold pine)[\(](bold text) [$username](bold rose)[, ](bold text)[$directory](bold rose)[\)](bold text) [->](bold iris) [Shell](bold gold) [\$](bold love)
+[fn](bold gold) [cmd](bold pine)[\(](bold text) [$username](bold rose)[, ](bold text)[$directory](bold rose)[\)](bold text) [->](bold iris) [Shell](bold gold)[\:](bold love)
 '''
 
 add_newline = false
