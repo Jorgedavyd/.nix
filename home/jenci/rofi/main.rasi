@@ -1,0 +1,98 @@
+configuration {
+    font: "Fira Code 12";
+    show-icons: true;
+    icon-theme: "Papirus";
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Windows";
+    display-ssh: "SSH";
+    modi: "drun,run,window,ssh";
+    sidebar-mode: true;
+    scroll-method: 1;
+}
+
+* {
+    background:     #191724;
+    background-alt: #1f1d2e;
+    foreground:     #e0def4;
+    selected:       #31748f;
+    active:         #9ccfd8;
+    urgent:         #eb6f92;
+
+    border-color:   @selected;
+    separatorcolor: @background-alt;
+    spacing:        2;
+    border-radius:  6;
+    padding:        6;
+}
+
+window {
+    transparency: "real";
+    background-color: @background;
+    border: 2px;
+    border-color: @selected;
+}
+
+mainbox {
+    background-color: @background;
+    children: [inputbar, message, listview];
+}
+
+inputbar {
+    background-color: @background-alt;
+    text-color: @foreground;
+    padding: 6;
+    border-radius: 4;
+}
+
+entry {
+    text-color: @foreground;
+}
+
+listview {
+    background-color: @background;
+    spacing: 2;
+    scrollbar: true;
+    fixed-height: false;
+    dynamic: true;
+}
+
+element {
+    border: 0;
+    padding: 6;
+    background-color: @background;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: @background;
+}
+
+element urgent {
+    background-color: @urgent;
+    text-color: @background;
+}
+
+element active {
+    background-color: @active;
+    text-color: @background;
+}
+
+message {
+    background-color: @background-alt;
+    text-color: @foreground;
+    padding: 6;
+}
+
+scrollbar {
+    width: 6;
+    background-color: @background-alt;
+    handle-color: @selected;
+    handle-width: 6;
+}
+
+button selected {
+    background-color: @selected;
+    text-color: @background;
+}

@@ -4,6 +4,5 @@
 - [ ] Wofi (applications -> search in firefox (xdg implementation))
 - [ ] Setup the theme, cursor, items, etc. (within hyprland)
 - [ ] Setup waybar
-- [ ] Solve the /bin/bash not a valid shell within tmux
 - [ ] Solve the plenary and hererocks problem in the lazy module in nvim.
 - [ ] Solve the wallpaper
