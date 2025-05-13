@@ -3,18 +3,22 @@ return {
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
-        { "<leader>pf" , require("telescope.builtin").find_files, {} },
-        { "<C-p>" , require("telescope.builtin").git_files, {} },
+        { "<leader>pf" , function() require("telescope.builtin").find_files() end, {} },
+        { "<C-p>" , function ()
+            require("telescope.builtin").git_files()
+        end, {} },
         { "<leader>pws" , function()
             require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-        end },
+        end , {}},
         { "<leader>pWs" , function()
             require("telescope.builtin").grep_string({ search = vim.fn.expand("<cWORD>") })
-        end },
+        end , {}},
         { "<leader>ps" , function()
             require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
-        end },
-        { "<leader>vh" , require("telescope.builtin").help_tags, {} },
+        end , {}},
+        { "<leader>vh" , function()
+            require("telescope.builtin").help_tags()
+        end, {} }
     },
 
     config = function()
