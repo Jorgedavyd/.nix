@@ -8,7 +8,7 @@
         xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
-        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gtk bibata-cursors
         rose-pine-gtk-theme
         rose-pine-icon-theme
         rose-pine-cursor
@@ -64,5 +64,6 @@
             enable = true;
             nix-direnv.enable = true;
         };
+        dconf.enable = true;
     };
 }
