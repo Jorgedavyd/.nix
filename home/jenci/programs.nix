@@ -9,9 +9,6 @@
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
         xdg-desktop-portal-gtk bibata-cursors
-        rose-pine-gtk-theme
-        rose-pine-icon-theme
-        rose-pine-cursor
         (nerdfonts.override { fonts = ["JetBrainsMono" "Iosevka" "CommitMono" ]; })
     ];
 
