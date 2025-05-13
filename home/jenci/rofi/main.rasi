@@ -1,10 +1,10 @@
 * {
-    background-color:           #0F1212;
-    text-color:                 #d3d7cf;
-    selbg:                      #e3e3e3;
-    actbg:                      #e3e3e3;
-    urgbg:                      #e53935;
-    winbg:                      #0F1212;
+    background-color:           #191724;
+    text-color:                 #e0def4;
+    selbg:                      #ebbcba;
+    actbg:                      #ebbcba;
+    urgbg:                      #eb6f92;
+    winbg:                      #1f1d2e;
 
     alternate-normal-background: @background-color;
     alternate-normal-foreground: @text-color;

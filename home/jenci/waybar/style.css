@@ -1,5 +1,5 @@
 * {
-    font-family: 'JetBrains Mono Nerd Font';
+    font-family: 'Iosevka Nerd Font';
     font-weight: 600;
     font-size: 14px;
     margin: 0;
@@ -23,23 +23,23 @@ window#waybar.hidden {
 #workspaces button {
     padding: 0 5px 0 10px;
     background-color: transparent;
-    color: #6e6a86;
+    color: #eb6f92;
     transition-property: color;
     transition-duration: 0.35s;
     border-radius: 50%;
 }
 
 #workspaces button.active {
-    color: #e0def4;
+    color: #ebbcba;
 }
 
 #workspaces button.urgent {
-    background-color: #c9a0dc;
-    color: #000000;
+    background-color: #c4a7e7;
+    color: #191724;
 }
 
 #mode {
-    background-color: #64727D;
+    background-color: #6e6a86;
     border-bottom: 3px solid #ffffff;
 }
 
@@ -53,18 +53,13 @@ window#waybar.hidden {
     padding: 0 15px;
     margin-right: 8px;
     border-radius: 10px;
-    border: 2px solid #c4a7e7;
-    background-color: #232136;
+    border: 1px solid #ebbcba;
+    background-color: #1f1d2e;
 }
 
 #clock.date {
     color: #eb6f92;
     margin-right: 8px;
-}
-
-#custom-updates {
-    color: #f6c177;
-    font-weight: 600;
 }
 
 #cpu {

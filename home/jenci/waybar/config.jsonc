@@ -4,14 +4,9 @@
     "width": 1904,
     "spacing": 0,
     "margin-top": 4,
-    "modules-left": ["clock#date", "custom/updates"],
+    "modules-left": ["clock#date", "clock"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["cpu", "memory", "pulseaudio","clock"],
-    "custom/updates": {
-        "exec": "checkupdates | wc -l",
-        "format": "󰮯 {} pending updates",
-        "interval": 60
-    },
+    "modules-right": ["cpu", "memory", "pulseaudio"],
     "clock": {
         "format": "󰥔 {:%I:%M%p}",
         "height": 26
@@ -39,7 +34,7 @@
             "4": "",
             "6": "",
             "urgent": ""
-        },
+        }
     },
     "pulseaudio": {
         "format": "󰓃 {volume}%",
