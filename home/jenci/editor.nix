@@ -1,58 +1,61 @@
 { pkgs, ... }:
 
 let
-  treesitterWithGrammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-    p.bash p.dockerfile p.gitattributes p.gitignore
-    p.lua p.python
-    p.toml p.yaml p.xml
-    p.zig p.c p.cpp p.cuda p.rust
-    p.cmake p.make p.nix
-  ]);
+    treesitterWithGrammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+        p.bash p.dockerfile p.gitattributes p.gitignore
+        p.lua p.python
+        p.toml p.yaml p.xml
+        p.zig p.c p.cpp p.cuda p.rust
+        p.cmake p.make p.nix
+    ]);
 
-  treesitter-parsers = pkgs.symlinkJoin {
-    name = "treesitter-parsers";
-    paths = treesitterWithGrammars.dependencies;
-  };
+    treesitter-parsers = pkgs.symlinkJoin {
+        name = "treesitter-parsers";
+        paths = treesitterWithGrammars.dependencies;
+    };
 
-  myPackages = with pkgs; [
-    ## Treesitter
-    vimPlugins.nvim-treesitter
+    myPackages = with pkgs; [
+        ## Treesitter
+        vimPlugins.nvim-treesitter
 
-    ## Compilers and interpreters
-    rustc
-    clang-tools
-    python310
-    jdk11
-    lua
-    zig
+        ## Compilers and interpreters
+        rustc
+        clang-tools
+        python310
+        jdk11
+        lua
+        zig
 
-    ## Language servers
-    lua-language-server
-    jdt-language-server
-    pyright
-    rust-analyzer
-    zls
-    nil
+        ## Language servers
+        lua-language-server
+        jdt-language-server
+        pyright
+        rust-analyzer
+        zls
+        nil
 
-    ## Formatters and tools
-    stylua
-    black
-    cargo
-    rustPackages.rustfmt
-    maven
-  ];
+        ## Formatters and tools
+        stylua
+        black
+        cargo
+        rustPackages.rustfmt
+        maven
+
+        ## testing
+        lldb
+    ];
 in {
-  programs.neovim = {
-    enable = true;
-    package = pkgs.neovim;
-    plugins = [ treesitterWithGrammars ];
-  };
+    programs.neovim = {
+        enable = true;
+        package = pkgs.neovim;
+        plugins = [ treesitterWithGrammars ];
+    };
 
-  home.packages = myPackages;
+    home.packages = myPackages;
 
-  home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
-    recursive = true;
-    source = treesitterWithGrammars;
-  };
+    home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
+        recursive = true;
+        source = treesitterWithGrammars;
+    };
 }
 

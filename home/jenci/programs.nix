@@ -7,10 +7,10 @@
         hyprlock rofi-wayland grim grimblast swww waybar starship wl-clipboard
         xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
-        obsidian ghostty tmux
+        obsidian ghostty tmux neovim
         xdg-desktop-portal-gtk bibata-cursors
         (nerdfonts.override { fonts = ["JetBrainsMono" "Iosevka" "CommitMono" ]; })
-	onedrive
+        onedrive
     ];
 
     fonts.fontconfig.enable = true;
@@ -49,14 +49,6 @@
                 pull.rebase = true;
                 credential.helper = "cache";
             };
-        };
-        neovim = {
-            enable = true;
-            extraPackages = with pkgs; [
-                rust-analyzer zls rustfmt clang-tools pyright lua-language-server stylua jdt-language-server nil
-                lldb
-                nodejs gcc
-            ];
         };
         direnv = {
             enable = true;
