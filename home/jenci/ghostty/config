@@ -1,7 +1,7 @@
 theme = rose-pine
 shell-integration = bash
 
-font-family = "Liga SFMono Nerd Font"
+font-family = "CommitMono Nerd Font"
 window-inherit-font-size = true
 font-size = 20
 
