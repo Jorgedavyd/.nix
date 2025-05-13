@@ -1,7 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
-    dependencies = { 'nvim-treesitter/playground' },
     main = "nvim-treesitter.configs",
     dev = true,
     opts = {

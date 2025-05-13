@@ -1,14 +1,12 @@
 return {
     "nvim-telescope/telescope.nvim",
-
-    dependencies = {
-        "nvim-lua/plenary.nvim"
-    },
-
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    main = "telescope",
+    dev = true,
     keys = {
         { "<leader>pf" , require("telescope.builtin").find_files, {} },
         { "<C-p>" , require("telescope.builtin").git_files, {} },
-        { "<leader>w" , require("telescope.builtin").colorscheme, {} },
         { "<leader>pws" , function()
             require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
         end },

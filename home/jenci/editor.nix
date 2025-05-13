@@ -17,6 +17,7 @@ let
     myPackages = with pkgs; [
         ## Treesitter
         vimPlugins.nvim-treesitter
+        vimPlugins.telescope-nvim
 
         ## Compilers and interpreters
         rustc
@@ -47,7 +48,7 @@ let
 in {
     programs.neovim = {
         enable = true;
-        package = pkgs.neovim;
+        package = pkgs.neovim-unwrapped;
         plugins = [ treesitterWithGrammars ];
     };
 
@@ -56,6 +57,11 @@ in {
     home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
         recursive = true;
         source = treesitterWithGrammars;
+    };
+    
+    home.file."./.local/share/nvim/nix/telescope-nvim/" = {
+        recursive = true;
+        source = pkgs.vimPlugins.telescope-nvim;
     };
 }
 

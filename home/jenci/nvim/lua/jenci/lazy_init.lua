@@ -11,7 +11,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins", {
+require("lazy").setup({
     spec = vim.tbl_map(function (value)
         return { import = "jenci.lazy" .. value }
     end, { "", ".completion", ".lsp", ".motion", ".testing", ".ui", ".ui.themes" }),
@@ -19,7 +19,7 @@ require("lazy").setup("plugins", {
     rocks = { enabled = false },
     dev = {
         path = "~/.local/share/nvim/nix",
-        patterns = { "nvim-treesitter" },
+        patterns = { "nvim-treesitter", "telescope-nvim" },
         fallback = false,
     }
 })
