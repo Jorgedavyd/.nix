@@ -5,6 +5,6 @@ font-family = "CommitMono Nerd Font"
 window-inherit-font-size = true
 font-size = 20
 
-background-opacity = 0.9
+background-opacity = 1
 window-padding-y = 10,0
 fullscreen = true
