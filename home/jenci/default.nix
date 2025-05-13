@@ -9,6 +9,7 @@
         ./programs.nix
         ./shell.nix
         ./xdg.nix
+        ./editor.nix
         ./swww.nix
     ];
 }
