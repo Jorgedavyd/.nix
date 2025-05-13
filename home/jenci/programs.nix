@@ -61,6 +61,5 @@
             enable = true;
             nix-direnv.enable = true;
         };
-        dconf.enable = true;
     };
 }
