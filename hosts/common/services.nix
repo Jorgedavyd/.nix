@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
     services = {
         pipewire = {
             enable = true;
@@ -7,10 +7,25 @@ _: {
             pulse.enable = true;
         };
         openssh.enable = true;
-        onedrive.enable = true;
         seatd.enable = true;
         dbus.enable = true;
         gnome.gnome-keyring.enable = true;
         gnome.glib-networking.enable = true;
     };
+    systemd.user.services.onedrive = {
+	    Unit = {
+		    Description = "OneDrive cloud sync service";
+		    After = [ "network.target" ];
+	    };
+
+	    Service = {
+		    ExecStart = "${pkgs.onedrive}/bin/onedrive --monitor --resync";
+		    Restart = "on-failure";
+	    };
+
+	    Install = {
+		    WantedBy = [ "default.target" ];
+	    };
+    };
+
 }

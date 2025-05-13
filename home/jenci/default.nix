@@ -8,6 +8,7 @@
     imports = [
         ./programs.nix
         ./shell.nix
+        ./onedrive.nix
         ./xdg.nix
         ./swww.nix
     ];
