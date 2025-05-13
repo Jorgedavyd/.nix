@@ -2,8 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
-    main = "telescope",
-    dev = true,
     keys = {
         { "<leader>pf" , require("telescope.builtin").find_files, {} },
         { "<C-p>" , require("telescope.builtin").git_files, {} },
