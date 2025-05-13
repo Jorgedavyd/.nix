@@ -9,19 +9,19 @@ return {
         "mfussenegger/nvim-dap-python",
     },
     keys = {
-        {"<F1>", require("dap").continue},
-        {"<F2>", require("dap").step_into},
-        {"<F3>", require("dap").step_over},
-        {"<F4>", require("dap").step_out},
-        {"<F5>", require("dap").step_back},
-        {"<F6>", require("dap").restart},
+        {"<F1>", function() require("dap").continue() end},
+        {"<F2>", function() require("dap").step_into() end},
+        {"<F3>", function() require("dap").step_over() end},
+        {"<F4>", function() require("dap").step_out() end},
+        {"<F5>", function() require("dap").step_back() end},
+        {"<F6>", function() require("dap").restart() end},
         { "<leader>cb", function ()
             vim.ui.input({prompt = "Condition: "}, function (condition)
                 require("dap").toggle_breakpoint(condition)
             end)
         end, "n", noremap = true, silent = true, desc = "Debug adapter protocol breakpoint on condition" },
-        { "<leader>b", require("dap").toggle_breakpoint, "n",  noremap = true, silent = true, desc = "Debug adapter protocol breakpoint" },
-        { '<leader>cB', require("dap").clear_breakpoints, "n", noremap = true, silent = true, desc = "Debug adapter protocol clear breakpoints" }
+        { "<leader>b", function() require("dap").toggle_breakpoint() end, "n",  noremap = true, silent = true, desc = "Debug adapter protocol breakpoint" },
+        { '<leader>cB', function() require("dap").clear_breakpoints() end, "n", noremap = true, silent = true, desc = "Debug adapter protocol clear breakpoints" }
     },
     config = function()
         local dap = require("dap")
