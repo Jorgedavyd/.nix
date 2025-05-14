@@ -37,9 +37,4 @@
         ## testing
         lldb
     ];
-
-    home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
-        recursive = true;
-        source = treesitterWithGrammars;
-    };
 }
