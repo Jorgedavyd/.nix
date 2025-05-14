@@ -1,23 +1,16 @@
-{ pkgs, inputs, ... }:
-
-let
-    treesitterWithGrammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
-        p.bash p.dockerfile p.gitattributes p.gitignore
-        p.lua p.python
-        p.toml p.yaml p.xml
-        p.zig p.c p.cpp p.cuda p.rust
-        p.cmake p.make p.nix
-    ]);
-
-    treesitter-parsers = pkgs.symlinkJoin {
-        name = "treesitter-parsers";
-        paths = treesitterWithGrammars.dependencies;
+{ inputs, pkgs, ... }:
+{
+    programs.neovim = {
+        enable = true;
+        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     };
 
-    myPackages = with pkgs; [
-        ## Treesitter
-        vimPlugins.nvim-treesitter
+    home.file.".config/nvim" = {
+        source = ./nvim;
+        recursive = true;
+    };
 
+    home.packages = with pkgs; [
         ## Compilers and interpreters
         rustc
         clang-tools
@@ -44,22 +37,9 @@ let
         ## testing
         lldb
     ];
-in {
-    programs.neovim = {
-        enable = true;
-        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-    };
-
-    home.file.".config/nvim" = {
-        source = ./nvim;
-        recursive = true;
-    };
-
-    home.packages = myPackages;
 
     home.file."./.local/share/nvim/nix/nvim-treesitter/" = {
         recursive = true;
         source = treesitterWithGrammars;
     };
 }
-

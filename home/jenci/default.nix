@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ inputs, config, pkgs, ... }:
 {
     programs.home-manager.enable = true;
     home.username = "jenci";
@@ -46,4 +46,5 @@
             source = ./rofi;
             recursive = true;
         };
+    };
 }

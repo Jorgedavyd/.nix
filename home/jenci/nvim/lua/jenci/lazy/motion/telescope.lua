@@ -21,29 +21,27 @@ return {
         end, {} }
     },
 
-    config = function()
-        require('telescope').setup({
-            defaults = {
-                sorting_strategy = "ascending",
-                layout_strategy = "horizontal",
-                layout_config = {
-                    prompt_position = "top",
-                    preview_cutoff = 120,
-                },
-                mappings = {
-                    i = {
-                        ["<C-j>"] = "move_selection_next",
-                        ["<C-k>"] = "move_selection_previous",
-                    },
+    opts = {
+        defaults = {
+            sorting_strategy = "ascending",
+            layout_strategy = "horizontal",
+            layout_config = {
+                prompt_position = "top",
+                preview_cutoff = 120,
+            },
+            mappings = {
+                i = {
+                    ["<C-j>"] = "move_selection_next",
+                    ["<C-k>"] = "move_selection_previous",
                 },
             },
-            pickers = {
-                colorscheme = {
-                    enable_preview = true,
-                    ignore_builtins = true
-                }
+        },
+        pickers = {
+            colorscheme = {
+                enable_preview = true,
+                ignore_builtins = true
             }
-        })
-    end
+        }
+    }
 }
 
