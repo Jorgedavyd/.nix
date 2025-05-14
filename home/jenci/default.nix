@@ -4,6 +4,7 @@
     home.username = "jenci";
     home.homeDirectory = "/home/jenci";
     home.stateVersion = "24.11";
+    home.extraSpecialArgs = { inherit inputs; };
     home.sessionVariables.TERM = "ghostty";
     imports = [
         ./programs.nix
@@ -12,6 +13,12 @@
         ./editor.nix
         ./wallpapers.nix
     ];
+
+    programs.neovim = {
+        enable = true;
+        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    };
+
 
     home.file = {
 

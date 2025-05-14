@@ -1,10 +1,5 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-    programs.neovim = {
-        enable = true;
-        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
-    };
-
     home.file.".config/nvim" = {
         source = ./nvim;
         recursive = true;
