@@ -1,11 +1,4 @@
-{
-pkgs,
-lib,
-modulesPath,
-...
-}:
-
-{
+_: {
     imports = [
         ./hardware.nix
         ./boot.nix

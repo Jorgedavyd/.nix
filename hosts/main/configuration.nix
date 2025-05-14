@@ -1,16 +1,4 @@
-{
-inputs,
-outputs,
-pkgs,
-config,
-lib,
-timezone,
-locale,
-username,
-...
-}:
-
-{
+_: {
     imports = [
         ../common/default.nix
         ./hardware-configuration.nix

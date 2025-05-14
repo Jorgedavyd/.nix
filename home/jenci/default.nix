@@ -1,5 +1,4 @@
-{ inputs, config, pkgs, ... }:
-{
+_: {
     programs.home-manager.enable = true;
     home.username = "jenci";
     home.homeDirectory = "/home/jenci";

@@ -1,8 +1,4 @@
-{
-  ...
-}:
-
-{
+_: {
     networking = {
         interfaces = {
             wlan0.ipv4.addresses = [{
