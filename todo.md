@@ -1,8 +1,7 @@
 # Tasks
 
-- [ ] Wofi (wallpapers)
-- [ ] Wofi (applications -> search in firefox (xdg implementation))
-- [ ] Setup the theme, cursor, items, etc. (within hyprland)
-- [ ] Setup waybar
-- [ ] Solve the plenary and hererocks problem in the lazy module in nvim.
-- [ ] Solve the wallpaper
+- [ ] Learn how to use flakes throughly for reproducibility.
+- [ ] Create overlays for particular packages I use.
+    - [ ] cudnn, tensorboard, cufft, etc.
+- [ ] Instead of having dependencies tied to my main machine, have them in flakes for each project.
+- [ ] Create flakes for each project.
