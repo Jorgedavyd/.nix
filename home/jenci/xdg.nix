@@ -6,6 +6,16 @@
         dataHome = "${config.home.homeDirectory}/.local/share";
         cacheHome = "${config.home.homeDirectory}/.cache";
         stateHome = "${config.home.homeDirectory}/.local/state";
+        configFile = {
+            "nvim".source = ./nvim;
+            "starship.toml".source = ./starship/starship.toml;
+            "ghostty/config".source = ./ghostty/config;
+            "tmux/tmux.conf".source = ./tmux/tmux.conf;
+            "zathura/zathurarc".source = ./zathura/zathurarc;
+            "hypr".source = ./hypr;
+            "waybar".source = ./waybar;
+            "rofi".source = ./rofi;
+        };
         userDirs = {
             enable = true;
             createDirectories = true;
