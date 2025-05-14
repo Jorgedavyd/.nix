@@ -1,4 +1,4 @@
 return {
     "mbbill/undotree",
-    { "<leader>u", function() vim.cmd.UndotreeToggle() end },
+    keys = { { "<leader>u", function() vim.cmd.UndotreeToggle() end } },
 }

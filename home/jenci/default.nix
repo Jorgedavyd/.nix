@@ -14,10 +14,6 @@
     ];
 
     home.file = {
-        ".config/nvim" = {
-            source = ./nvim;
-            recursive = true;
-        };
 
         ".config/starship.toml".source = ./starship/starship.toml;
 
