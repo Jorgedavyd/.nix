@@ -10,6 +10,44 @@
         ./shell.nix
         ./xdg.nix
         ./editor.nix
-        ./swww.nix
+        ./wallpapers.nix
     ];
+
+    home.file = {
+        ".config/nvim" = {
+            source = ./nvim;
+            recursive = true;
+        };
+
+        ".config/starship.toml".source = ./starship/starship.toml;
+
+        ".config/ghostty" = {
+            source = ./ghostty;
+            recursive = true;
+        };
+
+        ".config/tmux" = {
+            source = ./tmux;
+            recursive = true;
+        };
+
+        ".config/zathura" = {
+            source = ./zathura;
+            recursive = true;
+        };
+
+        ".config/hypr" = {
+            source = ./hypr;
+            recursive = true;
+        };
+
+        ".config/waybar" = {
+            source = ./waybar;
+            recursive = true;
+        };
+
+        ".config/rofi" = {
+            source = ./rofi;
+            recursive = true;
+        };
 }

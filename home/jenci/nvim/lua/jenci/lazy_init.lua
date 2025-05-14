@@ -14,12 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = vim.tbl_map(function (value)
         return { import = "jenci.lazy" .. value }
-    end, { "", ".completion", ".lsp", ".motion", ".testing", ".ui", ".ui.themes" }),
+    end, { "", ".completion", ".lsp", ".motion", ".testing", ".ui" }),
+    defaults = { lazy = false, version = false },
+    checker = { enabled = true, notify = false },
     change_detection = { notify = false },
     rocks = { enabled = false },
-    dev = {
-        path = "~/.local/share/nvim/nix",
-        patterns = { "nvim-treesitter", "telescope-nvim" },
-        fallback = false,
-    }
 })

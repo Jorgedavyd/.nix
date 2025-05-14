@@ -7,7 +7,7 @@
         hyprlock rofi-wayland grim grimblast swww waybar starship wl-clipboard
         xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
-        obsidian ghostty tmux neovim-unwrapped
+        obsidian ghostty tmux
         xdg-desktop-portal-gtk bibata-cursors
         (nerdfonts.override { fonts = ["JetBrainsMono" "Iosevka" "CommitMono" ]; })
         onedrive

@@ -24,9 +24,3 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
---[[
-Personal favorite for ortholinear
-vim.keymap.set("v", "in", "ib")
-vim.keymap.set("v", "iN", "iB")
-vim.keymap.set("v", "i\", "i[")
----]]

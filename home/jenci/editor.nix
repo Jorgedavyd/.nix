@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 let
     treesitterWithGrammars = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
@@ -47,8 +47,12 @@ let
 in {
     programs.neovim = {
         enable = true;
-        package = pkgs.neovim-unwrapped;
-        plugins = [ treesitterWithGrammars ];
+        package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    };
+
+    home.file.".config/nvim" = {
+        source = ./nvim;
+        recursive = true;
     };
 
     home.packages = myPackages;

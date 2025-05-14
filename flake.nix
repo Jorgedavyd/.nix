@@ -7,9 +7,10 @@
             url = "github:nix-community/home-manager/release-24.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, ... }@inputs:
         let
             inherit (nixpkgs) lib;
             inherit (self) outputs;

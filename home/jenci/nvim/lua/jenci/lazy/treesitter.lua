@@ -1,9 +1,13 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPost", "BufNewFile" },
-    main = "nvim-treesitter.configs",
-    dev = true,
     opts = {
+        ensure_installed = {
+            "python", "c", "lua", "cuda", "cpp", "zig",
+            "rust", "go", "java", "sql", "cmake", "bash",
+            "markdown_inline", "vimdoc", "vim", "toml",
+            "csv", "json", "make", "dockerfile", "xml", "yaml",
+            "rego"
+        },
         sync_install = false,
         auto_install = false,
         indent = {
@@ -16,12 +20,3 @@ return {
         }
     }
 }
---[[
-            ensure_installed = {
-                "python", "c", "lua", "cuda", "cpp", "zig",
-                "rust", "go", "java", "sql", "cmake", "bash",
-                "markdown_inline", "vimdoc", "vim", "toml",
-                "csv", "json", "make", "dockerfile", "xml", "yaml",
-                "rego"
-            },
-    ]]--

@@ -31,6 +31,13 @@ return {
             },
         }
 
+        lspconfig.nil_ls.setup {
+            capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern("flake.nix"),
+            filetypes = { "nix" },
+            cmd = { "nil" },
+        }
+
         lspconfig.zls.setup {
             capabilities = capabilities,
             root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
@@ -60,7 +67,7 @@ return {
                     fallbackFlags = {
                         "--std=c++17",
                         "--cuda-path=/opt/cuda",
-                        "--cuda-gpu-arch=sm_89",
+                        "--cuda-gpu-arch=sm_89", -- TODO
                         "-L/opt/cuda/lib",
                         "-I/opt/cuda/include",
                     },
