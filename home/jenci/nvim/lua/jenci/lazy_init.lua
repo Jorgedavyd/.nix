@@ -17,6 +17,8 @@ require("lazy").setup({
     end, { "", ".completion", ".lsp", ".motion", ".testing", ".ui" }),
     defaults = { lazy = false, version = false },
     checker = { enabled = true, notify = false },
-    change_detection = { notify = false },
+    change_detection = { enabled = true, notify = false },
     rocks = { enabled = false },
+    lockfile = os.getenv("HOME") .. ".nvim/lazy-lock.json",
+    state = os.getenv("HOME") .. ".nvim/state.json",
 })
