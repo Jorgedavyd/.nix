@@ -19,6 +19,6 @@ require("lazy").setup({
     checker = { enabled = true, notify = false },
     change_detection = { enabled = true, notify = false },
     rocks = { enabled = false },
-    lockfile = os.getenv("HOME") .. ".nvim/lazy-lock.json",
-    state = os.getenv("HOME") .. ".nvim/state.json",
+    lockfile = os.getenv("HOME") .. "/.nvim/lazy-lock.json",
+    state = os.getenv("HOME") .. "/.nvim/state.json",
 })
