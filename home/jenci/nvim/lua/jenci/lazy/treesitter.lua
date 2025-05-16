@@ -8,8 +8,8 @@ return {
             "csv", "json", "make", "dockerfile", "xml", "yaml",
             "rego"
         },
-        sync_install = false,
-        auto_install = false,
+        sync_install = true,
+        auto_install = true,
         indent = {
             enable = true
         },
