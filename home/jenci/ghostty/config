@@ -1,10 +1,9 @@
 theme = rose-pine
 shell-integration = bash
 
-font-family = "CommitMono Nerd Font"
+font-family = "Iosevka Nerd Font"
 window-inherit-font-size = true
-font-size = 20
+font-size = 24
 
 background-opacity = 1
 window-padding-y = 10,0
-fullscreen = true

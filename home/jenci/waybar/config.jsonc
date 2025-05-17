@@ -1,50 +1,95 @@
 {
-    "position": "top",
-    "height": 32,
-    "width": 1904,
+    "position": "bottom",
     "spacing": 0,
-    "margin-top": 4,
-    "modules-left": ["clock#date", "clock"],
-    "modules-center": ["wlr/workspaces"],
-    "modules-right": ["cpu", "memory", "pulseaudio"],
-    "clock": {
-        "format": "󰥔 {:%I:%M%p}",
-        "height": 26
-    },
-    "clock#date": {
-        "format": " {:%A, %b %d}"
-    },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": false
-    },
-    "memory": {
-        "format": " {}%"
-    },
-    "wlr/workspaces": {
+    "height": 0,
+
+    "margin-top": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "cpu_text",
+        "cpu",
+        "memory",
+        "battery",
+        "network",
+        "pulseaudio"
+    ],
+
+    "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
         "format": "{icon}",
-        "on-click": "activate",
-        "active-only": false,
-        "all-outputs": true,
         "format-icons": {
             "1": "",
-            "3": "",
-            "2": "",
-            "5": "",
-            "4": "",
-            "6": "",
-            "urgent": ""
+            "2": "",
+            "3": "",
         }
     },
-    "pulseaudio": {
-        "format": "󰓃 {volume}%",
-        "format-icons": {
-            "headphone": "",
-            "default": ["", ""]
-        },
-        "scroll-step": 1,
-        "on-click": "pavucontrol",
-        "ignored-sinks": ["Easy Effects Sink"]
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
     },
-    "sort-by-number": true
+
+    "clock": {
+        "format": "{:%I:%M %p - %a, %d %b %Y}",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "format": "cpu {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
+    },
+
+    "memory": {
+        "format": "mem {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
+    },
+
+    "battery": {
+        "format": "bat {capacity}%",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "tooltip": false
+    },
+
+    "network": {
+        "format-wifi" : "wifi {bandwidthDownBits}",
+        "format-ethernet": "enth {bandwidthDownBits}",
+        "format-disconnected" : "no network",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "max-volume": 150,
+        "format": "vol {volume}%",
+        "format-bluetooth": "vol {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    }
 }
