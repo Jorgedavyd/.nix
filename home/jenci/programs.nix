@@ -1,7 +1,11 @@
 { pkgs, ...}:
-{
+let
+    sfmono-liga = pkgs.callPackage /etc/nixos/overlays/fonts/sfmono_liga.nix { };
+    blexmono-liga = pkgs.callPackage /etc/nixos/overlays/fonts/blexmono_liga.nix { };
+in {
     home.packages = with pkgs; [
         yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
+        gnutar zip unzip
         traceroute nettools nmap
         texliveFull zathura
         hyprlock rofi-wayland grim grimblast swww waybar starship wl-clipboard
@@ -9,7 +13,8 @@
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
         xdg-desktop-portal-gtk bibata-cursors
-        (nerdfonts.override { fonts = ["JetBrainsMono" "Iosevka" "CommitMono" ]; })
+        (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
+        sfmono-liga blexmono-liga
         onedrive
     ];
 
