@@ -8,6 +8,5 @@ _: {
                 };
             };
         };
-        xserver.enable = true;
     };
 }

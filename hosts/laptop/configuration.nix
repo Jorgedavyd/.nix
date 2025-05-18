@@ -5,5 +5,6 @@ _: {
         ./networking.nix
         ./filesystem.nix
         ./services.nix
+        ./wm.nix
     ];
 }
