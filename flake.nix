@@ -18,11 +18,7 @@
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
-                overlays = [
-                    neovim-nightly-overlay.overlays.default
-                    (import ./overlays/font.nix)
-                    (import ./overlays/cuda-tools.nix)
-                ];
+                overlays = [ neovim-nightly-overlay.overlays.default ];
             };
             settings = {
                 username = "jenci";

@@ -46,4 +46,3 @@ jobs:
 
       - name: Run linter (clippy)
         run: cargo clippy -- -D warnings
-

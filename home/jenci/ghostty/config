@@ -1,9 +1,9 @@
 theme = rose-pine
 shell-integration = bash
 
-font-family = "Blex Mono Nerd Font"
+font-family = "JetBrainsMono Nerd Font"
 window-inherit-font-size = true
-font-size = 25
+font-size = 18
 
 background-opacity = 1
 window-padding-y = 10,0

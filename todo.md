@@ -1,5 +1,22 @@
 # Tasks
 
+## Environment
+### Global
+compilers and interpreters -> (nvcc, clang, python, lua, etc)
+infra tools -> (minikube, helm, docker)
+
+### Per project
+Create derivations for them {
+    dependencies (torch, cudnn, etc.) {
+        Dev {
+            - [ ] Tensor RT
+            - [ ] Torch
+            - [ ] Transformers
+            - [ ] LoRA Lib
+        }
+    }
+}
+
 ## Nix Tasks (also workflow)
 
 - [ ] Learn how to use flakes throughly for reproducibility.

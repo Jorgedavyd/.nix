@@ -9,6 +9,7 @@
         ## Compilers and interpreters
         rustc
         clang-tools
+        rocmPackages.llvm.clang
         python310
         jdk11
         lua

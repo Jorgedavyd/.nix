@@ -1,3 +1,5 @@
+set -o vi
+
 case $- in
   *i*) ;;
     *) return;;
