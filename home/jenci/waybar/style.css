@@ -9,12 +9,12 @@
 }
 
 window#waybar {
-    background: #191724;
+    background: #232136;
     border: 2px solid #6e6a86;
 }
 
 tooltip {
-    background-color: #191724;
+    background-color: #232136;
     border: 2px solid #908caa;
 }
 
@@ -30,15 +30,15 @@ tooltip {
 }
 
 #workspaces {
-    background-color: #26233a;
+    background-color: #393552;
     margin: 6px 0px 6px 6px;
     border: 2px solid #6e6a86;
 }
 
 #workspaces button {
     padding: 2px 4px;
-    background-color: #26233a;
-    color: #ebbcba;
+    background-color: #393552;
+    color: #ea9a97;
     margin: 0.25em;
 }
 
@@ -55,47 +55,47 @@ tooltip {
 }
 
 #workspaces button.urgent {
-    color: #eb6f92;
+    color: #b4637a;
 }
 
 #clock {
-    background-color: #26233a;
+    background-color: #393552;
     border: 2px solid #6e6a86;
-    color: #ebbcba;
+    color: #ea9a97;
 }
 
 #tray {
-    background-color: #26233a;
+    background-color: #393552;
     border: 2px solid #6e6a86;
-    color: #ebbcba;
+    color: #ea9a97;
 }
 
 #battery {
-    background-color: #26233a;
+    background-color: #393552;
     border: 2px solid #6e6a86;
-    color: #ebbcba;
+    color: #ea9a97;
 }
 
 #cpu,
 #memory,
 #network,
 #pulseaudio {
-    background-color: #26233a;
+    background-color: #393552;
     border: 2px solid #6e6a86;
-    color: #ebbcba;
+    color: #ea9a97;
 }
 
 #cpu.critical,
 #memory.critical {
-    background-color: #26233a;
+    background-color: #393552;
     border: 2px solid #6e6a86;
-    color: #eb6f92;
+    color: #b4637a;
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-    background-color: #26233a;
+    background-color: #393552;
     border: 2px solid #6e6a86;
-    color: #eb6f92;
+    color: #b4637a;
 }
