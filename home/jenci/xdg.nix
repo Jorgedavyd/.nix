@@ -15,6 +15,7 @@
             "hypr".source = ./hypr;
             "waybar".source = ./waybar;
             "rofi".source = ./rofi;
+            "gowall/config.yml".source = ./gowall/config.yml;
         };
         userDirs = {
             enable = true;

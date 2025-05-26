@@ -6,8 +6,8 @@ _: {
     home.sessionVariables.TERM = "ghostty";
     imports = [
         ./programs.nix
-        ./shell.nix
         ./xdg.nix
+        ./shell.nix
         ./editor.nix
         ./wallpapers.nix
     ];
