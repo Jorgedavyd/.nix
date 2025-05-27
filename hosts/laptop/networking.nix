@@ -10,6 +10,5 @@ _: {
                 prefixLength = 24;
             }];
         };
-        wireless.enable = true;
     };
 }

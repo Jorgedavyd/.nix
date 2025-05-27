@@ -1,9 +1,9 @@
 _: {
     imports = [
         ../common/default.nix
-        ./hardware.nix
+        ./hardware-configuration.nix
         ./networking.nix
-        ./services.nix
+        # ./services.nix
         ./wm.nix
     ];
 }
