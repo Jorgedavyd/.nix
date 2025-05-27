@@ -1,4 +1,4 @@
-{ pkgs, ...}: {
+{ pkgs, dev-pkgs, ...}: {
     home.packages = with pkgs; [
         yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
         gnutar zip unzip
@@ -14,6 +14,10 @@
     ];
 
     fonts.fontconfig.enable = true;
+    fonts.packages = with dev-pkgs; [
+        sfmono_liga
+        blexmono_liga
+    ];
 
     programs = {
         firefox = {
