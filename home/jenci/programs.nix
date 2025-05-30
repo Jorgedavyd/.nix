@@ -47,7 +47,7 @@
             extraConfig = {
                 init.defaultBranch = "main";
                 pull.rebase = true;
-                credential.helper = "store";
+                credential.helper = "!gh auth git-credential";
             };
         };
         direnv = {
