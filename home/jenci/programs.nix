@@ -47,7 +47,7 @@
             extraConfig = {
                 init.defaultBranch = "main";
                 pull.rebase = true;
-                credential.helper = "cache";
+                credential.helper = "store";
             };
         };
         direnv = {
