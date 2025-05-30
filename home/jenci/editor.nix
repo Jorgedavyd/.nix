@@ -10,6 +10,7 @@
         rustc
         clang-tools
         rocmPackages.llvm.clang
+        libgcc
         python310
         jdk11
         lua

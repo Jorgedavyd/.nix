@@ -10,7 +10,7 @@
         obsidian ghostty tmux
         xdg-desktop-portal-gtk bibata-cursors
         (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
-        onedrive
+        onedrive sfmono-liga blexmono-liga
     ];
 
     fonts.fontconfig.enable = true;

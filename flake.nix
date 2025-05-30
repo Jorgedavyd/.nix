@@ -11,7 +11,7 @@
         dev-pkgs.url = "github:jorgedavyd/nix-dev";
     };
 
-    outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, nix-dev, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, dev-pkgs, ... }@inputs:
         let
             inherit (nixpkgs) lib;
             inherit (self) outputs;
@@ -19,7 +19,10 @@
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
-                overlays = [ neovim-nightly-overlay.overlays.default ];
+                overlays = [
+                    neovim-nightly-overlay.overlays.default
+                    dev-pkgs.overlays.default
+                ];
             };
             settings = {
                 username = "jenci";
