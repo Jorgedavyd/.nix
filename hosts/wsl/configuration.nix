@@ -1,4 +1,4 @@
-{ inputs, username, ... }: {
+{ inputs, username, pkgs, ... }: {
     imports = [
         <nixos-wsl/modules>
         inputs.home-manager.nixosModules.home-manager
@@ -23,6 +23,16 @@
                 ../../home/${username}/shell.nix
                 ../../home/${username}/xdg.nix
             ];
+            home.packages = with pkgs; [
+                yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
+                gnutar zip unzip
+                traceroute nettools nmap
+                texliveFull zathura
+                tmux (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
+                sfmono-liga blexmono-liga
+            ];
+
+            fonts.fontconfig.enable = true;
             programs = {
                 git = {
                     enable = true;
