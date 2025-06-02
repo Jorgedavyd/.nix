@@ -1,5 +1,5 @@
 {
-    description = "Jenci's NixOS configuration for main-pc and laptop";
+    description = "Jenci's NixOS configuration for main-pc, laptop, server, and WSL";
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
@@ -9,14 +9,15 @@
         };
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         dev-pkgs.url = "github:jorgedavyd/nix-dev";
-        nixos-wsl.url = "github:nix-community/NixOs-WSL/main";
+        nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     };
 
     outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, dev-pkgs, nixos-wsl, ... }@inputs:
         let
             inherit (nixpkgs) lib;
-            inherit (self) outputs;
+
             system = "x86_64-linux";
+
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
@@ -25,32 +26,46 @@
                     dev-pkgs.overlays.default
                 ];
             };
-            settings = {
+
+            defaultSettings = {
                 username = "jenci";
                 hostname = "nixos";
                 cudapackages = pkgs.cudaPackages;
                 timezone = "America/Asuncion";
                 locale = "en_US.UTF-8";
             };
-        in {
-            nixosConfigurations = {
-                main = lib.nixosSystem {
-                    inherit pkgs;
-                    specialArgs = {inherit self inputs outputs;} // settings;
+
+            # Host-specific configurations
+            hosts = {
+                main = {
                     modules = [ ./hosts/main/configuration.nix ];
+                    settings = { hostname = "main-nixos"; }; # Override default hostname
                 };
-                laptop = lib.nixosSystem {
-                    inherit pkgs;
-                    specialArgs = {inherit self inputs outputs;} // settings;
+                server = {
+                    modules = [ ./hosts/server/configuration.nix ];
+                    settings = { hostname = "server-nixos"; };
+                };
+                laptop = {
                     modules = [ ./hosts/laptop/configuration.nix ];
+                    settings = { hostname = "laptop-nixos"; };
                 };
-                wsl = lib.nixosSystem {
-                    inherit pkgs;
-                    specialArgs = {inherit self inputs outputs;} // settings;
-                    modules = [
-                        ./hosts/wsl/configuration.nix
-                    ];
+                wsl = {
+                    modules = [ ./hosts/wsl/configuration.nix ];
+                    settings = { hostname = "wsl-nixos"; };
                 };
             };
+
+            mkSystem = hostName: hostConfig:
+                lib.nixosSystem {
+                    inherit pkgs;
+                    specialArgs = {
+                        inherit self inputs;
+                        outputs = self.outputs;
+                    } // defaultSettings // hostConfig.settings;
+                    modules = hostConfig.modules;
+                };
+
+        in {
+            nixosConfigurations = lib.mapAttrs mkSystem hosts;
         };
 }
