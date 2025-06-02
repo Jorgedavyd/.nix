@@ -11,6 +11,7 @@
         xdg-desktop-portal-gtk bibata-cursors
         (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
         onedrive sfmono-liga blexmono-liga
+        openvpn
     ];
 
     fonts.fontconfig.enable = true;
