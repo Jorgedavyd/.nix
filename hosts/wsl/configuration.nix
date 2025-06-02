@@ -27,7 +27,7 @@
                 gnutar zip unzip
                 traceroute nettools nmap
                 texliveFull zathura
-                tmux (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
+                tmux starship (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
                 sfmono-liga blexmono-liga
             ];
 
@@ -53,4 +53,6 @@
     };
     wsl.enable = true;
     wsl.defaultUser = "${username}";
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    system.stateVersion = "24.11";
 }
