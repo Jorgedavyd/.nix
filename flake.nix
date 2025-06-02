@@ -9,9 +9,10 @@
         };
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         dev-pkgs.url = "github:jorgedavyd/nix-dev";
+        nixos-wsl.url = "github:nix-community/NixOs-WSL/main";
     };
 
-    outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, dev-pkgs, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, dev-pkgs, nixos-wsl, ... }@inputs:
         let
             inherit (nixpkgs) lib;
             inherit (self) outputs;
@@ -46,7 +47,9 @@
                 wsl = lib.nixosSystem {
                     inherit pkgs;
                     specialArgs = {inherit self inputs outputs;} // settings;
-                    modules = [ ./hosts/wsl/configuration.nix ];
+                    modules = [
+                        ./hosts/wsl/configuration.nix
+                    ];
                 };
             };
         };

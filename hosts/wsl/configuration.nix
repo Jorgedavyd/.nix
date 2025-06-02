@@ -1,7 +1,7 @@
 { inputs, username, pkgs, ... }: {
     imports = [
-        <nixos-wsl/modules>
         inputs.home-manager.nixosModules.home-manager
+        inputs.nixos-wsl.nixosModules.default
         ./packages.nix
         ../common/networking.nix
         ../common/user.nix
@@ -17,7 +17,6 @@
             home.username = "${username}";
             home.homeDirectory = "/home/${username}";
             home.stateVersion = "24.11";
-            home.sessionVariables.TERM = "ghostty";
             imports = [
                 ../../home/${username}/editor.nix
                 ../../home/${username}/shell.nix
