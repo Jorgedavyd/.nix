@@ -43,6 +43,11 @@
                     specialArgs = {inherit self inputs outputs;} // settings;
                     modules = [ ./hosts/laptop/configuration.nix ];
                 };
+                wsl = lib.nixosSystem {
+                    inherit pkgs;
+                    specialArgs = {inherit self inputs outputs;} // settings;
+                    modules = [ ./hosts/wsl/configuration.nix ];
+                };
             };
         };
 }
