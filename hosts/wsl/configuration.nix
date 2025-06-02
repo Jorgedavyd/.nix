@@ -3,7 +3,6 @@
         inputs.home-manager.nixosModules.home-manager
         inputs.nixos-wsl.nixosModules.default
         ./packages.nix
-        ../common/networking.nix
         ../common/user.nix
         ../common/work.nix
     ];
