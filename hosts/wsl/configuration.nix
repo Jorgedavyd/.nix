@@ -27,11 +27,9 @@
                 gnutar zip unzip
                 traceroute nettools nmap
                 texliveFull zathura
-                tmux starship (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
-                sfmono-liga blexmono-liga
+                tmux starship
             ];
 
-            fonts.fontconfig.enable = true;
             programs = {
                 git = {
                     enable = true;
