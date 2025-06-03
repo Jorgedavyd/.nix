@@ -264,14 +264,14 @@
         "lastModified": 1746453552,
         "narHash": "sha256-r66UGha+7KVHkI7ksrcMjnw/mm9Sg4l5bQlylxHwdGU=",
         "owner": "nix-community",
-        "repo": "NixOs-WSL",
+        "repo": "NixOS-WSL",
         "rev": "be618645aa0adf461f778500172b6896d5ab2d01",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "ref": "main",
-        "repo": "NixOs-WSL",
+        "repo": "NixOS-WSL",
         "type": "github"
       }
     },
