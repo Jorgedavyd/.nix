@@ -10,12 +10,10 @@
         obsidian ghostty tmux
         xdg-desktop-portal-gtk bibata-cursors
         onedrive
+        sfmono-liga blexmono-liga nerd-fonts.jetbrains-mono nerd-fonts.iosevka
     ];
 
     fonts.fontconfig.enable = true;
-    fonts.packages = with pkgs; [
-        sfmono-liga blexmono-liga nerd-fonts.jetbrains-mono nerd-fonts.iosevka
-    ];
 
     programs = {
         firefox = {
