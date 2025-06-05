@@ -9,11 +9,13 @@
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
         obsidian ghostty tmux
         xdg-desktop-portal-gtk bibata-cursors
-        (nerdfonts.override { fonts = [ "JetBrainsMono" "Iosevka" ]; })
-        onedrive sfmono-liga blexmono-liga
+        onedrive
     ];
 
     fonts.fontconfig.enable = true;
+    fonts.packages = with pkgs; [
+        sfmono-liga blexmono-liga nerd-fonts.jetbrains-mono nerd-fonts.iosevka
+    ];
 
     programs = {
         firefox = {
@@ -26,10 +28,8 @@
                         ref = "main";
                         rev = "dc40a861b24b378982c265a7769e3228ffccd45a";
                     }}/userChrome.css";
-          .tabbrowser-tab:first-child { counter-reset: nth-tab 0 }
-          .tab-text::before { content: counter(nth-tab) " | "; counter-increment: nth-tab }
           .tabbrowser-tab .tab-label {
-            font-family: FiraCode Nerd Font Mono !important;
+            font-family: JetBrains Nerd Font Mono !important;
             font-size: 14px !important;
           }
                 '';
