@@ -1,3 +1,3 @@
 { pkgs, ... }: {
-    environment.systemPackages = with pkgs; [ teams-for-linux openvpn ];
+    environment.systemPackages = with pkgs; [ teams-for-linux openfortivpn ];
 }
