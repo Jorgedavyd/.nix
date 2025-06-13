@@ -27,11 +27,11 @@ return {
                     mode = "symbol",
                     maxwidth = 50,
                     ellipsis_char = '...',
-                    symbol_map = { Codeium = "", }
+                    symbol_map = { Supermaven = "" },
                 })
             },
             sources = {
-                { name = 'codeium' },
+                { name = 'supermaven' },
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
                 { name = 'buffer' },
