@@ -7,7 +7,7 @@
         hyprlock rofi-wayland grim grimblast swww gowall waybar starship wl-clipboard
         xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs
         pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
-        obsidian ghostty tmux
+        obsidian ghostty tmux llama-cpp
         xdg-desktop-portal-gtk bibata-cursors
         onedrive
         sfmono-liga blexmono-liga nerd-fonts.jetbrains-mono nerd-fonts.iosevka

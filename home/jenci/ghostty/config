@@ -3,7 +3,7 @@ shell-integration = bash
 
 font-family = "Liga SFMono Nerd Font"
 window-inherit-font-size = true
-font-size = 18
+font-size = 24
 
 background-opacity = 1
 window-padding-y = 10,0

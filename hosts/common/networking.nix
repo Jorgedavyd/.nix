@@ -7,4 +7,7 @@
         defaultGateway = "192.168.100.1";
         hostName = hostname;
     };
+    boot.kernel.sysctl = {
+        "net.ipv4.conf.eth0.forwarding" = 1;    # enable port forwarding
+    };
 }
