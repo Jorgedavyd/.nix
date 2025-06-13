@@ -6,6 +6,7 @@ return {
         "hrsh7th/cmp-cmdline",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "onsails/lspkind.nvim"
     },
     config = function()
         local cmp = require("cmp")
@@ -19,6 +20,14 @@ return {
             },
             window = {
                 completion = cmp.config.window.bordered()
+            },
+            formatting = {
+                format = require('lspkind').cmp_format({
+                    mode = "symbol",
+                    maxwidth = 50,
+                    ellipsis_char = '...',
+                    symbol_map = { Codeium = "", }
+                })
             },
             sources = {
                 { name = 'codeium' },
