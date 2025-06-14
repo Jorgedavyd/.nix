@@ -1,5 +1,5 @@
 theme = rose-pine-moon
-shell-integration = bash
+shell-integration = zsh
 
 font-family = "Liga SFMono Nerd Font"
 window-inherit-font-size = true
