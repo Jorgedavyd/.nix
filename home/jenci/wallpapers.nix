@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
     wallpaperSpec = [
@@ -35,15 +35,6 @@ let
             };
         };
     }) wallpaperSpec);
-    defaultPath =  "${config.home.homeDirectory}/.local/state/wallpapers";
-    wallpaperPaths = builtins.map (spec:
-        config.home.homeDirectory + "/.local/state/wallpapers/" + (basename spec.url)
-    ) wallpaperSpec;
-    wallpaperArg = lib.concatStringsSep "," wallpaperPaths;
 in {
     home.file = wallpaperFiles;
-
-    home.activation.setWallpaper = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        ${pkgs.gowall}/bin/gowall convert --batch ${wallpaperArg} -t rose-pine-moon
-    '';
 }

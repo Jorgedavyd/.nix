@@ -9,6 +9,8 @@ _: {
         ./xdg.nix
         ./shell.nix
         ./editor.nix
+        ./browser.nix
+        ./git.nix
         ./wallpapers.nix
     ];
 }
