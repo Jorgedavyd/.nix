@@ -25,7 +25,7 @@ _: {
             alert = "notify-send --urgency=low -i \"$([ \$? = 0 ] && echo terminal || echo error)\" \"$(history 1 | sed -e 's/^\\s*[0-9]\\+\\s*//;s/[;&|]\\s*alert$//')\"";
         };
         sessionVariables = { EDITOR = "nvim"; };
-        profileContent = ''
+        profileExtra = ''
             if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
                 exec Hyprland
             fi
