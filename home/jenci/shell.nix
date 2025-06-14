@@ -1,14 +1,21 @@
 _: {
+    home.file.".local/scripts" = {
+        source = ./scripts;
+        recursive = true;
+    };
     programs.zsh = {
         enable = true;
         enableCompletion = true;
-        autosuggestions.enable = true;
-        histSize = 1000;
-        saveHist = 2000;
-        ohMyZsh = {
+        autosuggestion.enable = true;
+        syntaxHighlighting.enable = true;
+        history = {
+            save = 10000;
+            size = 10000;
+        };
+        oh-my-zsh = {
             enable = true;
             theme = "robbyrussell";
-            plugins = [ "zsh-syntax-highlighting" ];
+            plugins = [ "git" ];
         };
         shellAliases = {
             ll = "ls -alF";
@@ -17,7 +24,13 @@ _: {
             vi = "nvim";
             alert = "notify-send --urgency=low -i \"$([ \$? = 0 ] && echo terminal || echo error)\" \"$(history 1 | sed -e 's/^\\s*[0-9]\\+\\s*//;s/[;&|]\\s*alert$//')\"";
         };
-        shellInit = ''
+        sessionVariables = { EDITOR = "nvim"; };
+        porfileContent = ''
+            if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+                exec Hyprland
+            fi
+        '';
+        initContent = ''
             VIM_MODE_VICMD_KEY='^C'
             MODE_CURSOR_VIINS="#fe8019 steady bar"
             MODE_CURSOR_REPLACE="$MODE_CURSOR_VIINS #fe8019"
@@ -40,10 +53,6 @@ _: {
             bindkey -r '^L'
 
             command -v direnv >/dev/null && eval "$(direnv hook zsh)"
-
-            if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-                exec Hyprland
-            fi
         '';
     };
 }

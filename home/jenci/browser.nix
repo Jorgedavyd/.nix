@@ -7,7 +7,7 @@ _: {
           @import "${builtins.fetchGit {
                     url = "https://github.com/cascadefox/cascade.git";
                     ref = "main";
-                    rev = "dc40a861b24b378982c265a7769e3228ffccd45a";
+                    rev = "f8c6bb5a36f24aba61995204ff5497c865e78e50";
                 }}/chrome/userChrome.css";
             '';
             settings = {
