@@ -1,16 +1,17 @@
 { pkgs, ...}: {
     home.packages = with pkgs; [
-        yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
-        gnutar zip unzip
-        traceroute nettools nmap
-        texliveFull zathura
-        hyprlock rofi-wayland grim grimblast swww gowall waybar starship wl-clipboard
-        xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs
-        pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia
-        obsidian ghostty tmux llama-cpp
-        xdg-desktop-portal-gtk bibata-cursors
-        sfmono-liga blexmono-liga nerd-fonts.jetbrains-mono nerd-fonts.iosevka
-        onedrive
+        yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr # cli
+        gnutar zip unzip # compression
+        traceroute nettools nmap # networking
+        texliveFull zathura # latex
+        hyprlock rofi-wayland grim grimblast swww gowall waybar starship wl-clipboard # ui-ux
+        xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs # ui-theme
+        xdg-desktop-portal-gtk bibata-cursors # cursors
+        sfmono-liga blexmono-liga nerd-fonts.jetbrains-mono nerd-fonts.iosevka # fonts
+        pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia # monitoring
+        obsidian ghostty tmux # code
+        onedrive # file-manager
+        nix-prefetch-scripts nix-prefetch-github nix-prefetch-git nix-prefetch-docker # derivation utils
     ];
 
     fonts.fontconfig.enable = true;
