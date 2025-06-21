@@ -15,7 +15,6 @@
         black
 
         ## Java
-        jdk23
         maven
         jdt-language-server
         vscode-extensions.vscjava.vscode-java-debug
