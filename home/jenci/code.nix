@@ -8,18 +8,21 @@
 
         ## C/C++
         clang-tools
+        gcc
 
         ## Python
         pyright
         black
 
         ## Java
+        jdk23
         maven
         jdt-language-server
         vscode-extensions.vscjava.vscode-java-debug
         vscode-extensions.vscjava.vscode-java-test
 
         ## Lua
+        lua
         lua-language-server
         stylua
 
