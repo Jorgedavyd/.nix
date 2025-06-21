@@ -10,12 +10,12 @@
 
 window#waybar {
     background: #141415;
-    border: 2px solid #cdcdcd;
+    border: 2px solid #d8647e;
 }
 
 tooltip {
     background-color: #141415;
-    border: 2px solid #cdcdcd;
+    border: 2px solid #d8647e;
 }
 
 #clock,
@@ -32,26 +32,26 @@ tooltip {
 #workspaces {
     background-color: #2D2D2F;
     margin: 6px 0px 6px 6px;
-    border: 2px solid #cdcdcd;
+    border: 2px solid #d8647e;
 }
 
 #workspaces button {
     padding: 2px 4px;
     background-color: #2D2D2F;
-    color: #d8647e;
+    color: #cdcdcd;
     margin: 0.25em;
 }
 
 #workspaces button.active {
-    color: #d8647e;
-}
-
-#workspaces button.empty {
     color: #cdcdcd;
 }
 
-#workspaces button.visible {
+#workspaces button.empty {
     color: #d8647e;
+}
+
+#workspaces button.visible {
+    color: #cdcdcd;
 }
 
 #workspaces button.urgent {
@@ -60,20 +60,20 @@ tooltip {
 
 #clock {
     background-color: #2D2D2F;
-    border: 2px solid #cdcdcd;
-    color: #d8647e;
+    border: 2px solid #d8647e;
+    color: #cdcdcd;
 }
 
 #tray {
     background-color: #2D2D2F;
-    border: 2px solid #cdcdcd;
-    color: #d8647e;
+    border: 2px solid #d8647e;
+    color: #cdcdcd;
 }
 
 #battery {
     background-color: #2D2D2F;
-    border: 2px solid #cdcdcd;
-    color: #d8647e;
+    border: 2px solid #d8647e;
+    color: #cdcdcd;
 }
 
 #cpu,
@@ -81,14 +81,14 @@ tooltip {
 #network,
 #pulseaudio {
     background-color: #2D2D2F;
-    border: 2px solid #cdcdcd;
-    color: #d8647e;
+    border: 2px solid #d8647e;
+    color: #cdcdcd;
 }
 
 #cpu.critical,
 #memory.critical {
     background-color: #2D2D2F;
-    border: 2px solid #cdcdcd;
+    border: 2px solid #d8647e;
     color: #BF3050;
 }
 
@@ -96,6 +96,6 @@ tooltip {
 #battery.critical,
 #battery.urgent {
     background-color: #2D2D2F;
-    border: 2px solid #cdcdcd;
+    border: 2px solid #d8647e;
     color: #BF3050;
 }
