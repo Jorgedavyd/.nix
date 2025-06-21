@@ -11,31 +11,42 @@ local function get_test_bundles()
     return vim.split(vim.fn.glob(ext_root:gsub("\n", "") .. "/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar", 1), "\n")
 end
 
+local function get_jdtls_path()
+    return vim.fn.system("nix eval --raw nixpkgs#jdt-language-server"):gsub("\n", "")
+end
+
 table.insert(bundles, get_debug_bundle())
 vim.list_extend(bundles, get_test_bundles())
 
-local function exepath_or_eval(name, flake_name)
-    local path = vim.fn.exepath(name)
-    if path ~= "" then
-        return path
-    end
+local function eval_path(flake_name)
     if flake_name == nil then
         local msg = string.format("Cannot find %s package, cannot run Java FileType Specific plugin", name)
         vim.notify(msg, vim.log.levels.WARN)
         return
     end
-    return vim.fn.system("nix eval --raw nixpkgs#" .. flake_name):gsub("\n", "")
+    local out
+    vim.system(
+        "nix" .. flake_name,
+        { text = true },
+        function(obj)
+            if obj.code == 0 then
+                out = string.gsub(obj.stdout, "\n", "")
+            end
+            eval_path()
+        end
+    )
+    return out
 end
 
-local jdk = exepath_or_eval("jdk23", "jdk23") or exepath_or_eval("jdk11", "jdk11")
+local jdk = vim.fn.getenv("JAVA_HOME")
 
 -- Define paths using Nix store
 local home = vim.env.HOME
 local jdtls = require("jdtls")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
-local java_path = vim.fn.exepath("java")
-local jdtls_path = vim.fn.exepath("jdtls"):gsub("/bin/jdtls", "")
+local java_path = vim.system("which java"):gsub("\n", "")
+local jdtls_path = get_jdtls_path()
 local lombok_path = jdtls_path .. "/../lombok/share/java/lombok.jar"
 
 local config = {
