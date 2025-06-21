@@ -15,6 +15,11 @@ local function get_jdtls_path()
     return vim.fn.system("nix eval --raw nixpkgs#jdt-language-server"):gsub("\n", "")
 end
 
+local function get_lombok_path()
+    local out = vim.fn.system("nix eval --raw nixpkgs#lombok"):gsub("\n", "")
+    return out .. "/share/java/lombok.jar"
+end
+
 table.insert(bundles, get_debug_bundle())
 vim.list_extend(bundles, get_test_bundles())
 
@@ -46,11 +51,18 @@ local jdtls = require("jdtls")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
 local java_path = vim.fn.system("which java"):gsub("\n", "")
-print(java_path)
 local jdtls_path = get_jdtls_path()
-print(jdtls_path)
-local lombok_path = jdtls_path .. "/../lombok/share/java/lombok.jar"
-print(lombok_path)
+local lombok_path = get_lombok_path()
+
+local plugin_dir = jdtls_path .. "/share/java/jdtls/plugins"
+local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher.*x86_64*.jar"
+local launcher_jar = vim.fn.glob(glob_pattern, true, true)[1]
+
+if not launcher_jar or launcher_jar == "" then
+  vim.notify("Cannot find JDTLS launcher jar", vim.log.levels.ERROR)
+  return
+end
+
 
 local config = {
     cmd = {
@@ -66,9 +78,9 @@ local config = {
         "--add-opens", "java.base/java.util=ALL-UNNAMED",
         "--add-opens", "java.base/java.lang=ALL-UNNAMED",
         "-jar",
-        jdtls_path .. "/share/jdtls/plugins/org.eclipse.equinox.launcher.jar",
+        launcher_jar,
         "-configuration",
-        jdtls_path .. "/share/jdtls/config_linux",
+        jdtls_path .. "/share/java/jdtls/config_linux",
         "-data",
         workspace_dir,
         "--enable-preview",
