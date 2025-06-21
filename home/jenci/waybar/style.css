@@ -9,13 +9,13 @@
 }
 
 window#waybar {
-    background: #232136;
-    border: 2px solid #6e6a86;
+    background: #141415;
+    border: 2px solid #cdcdcd;
 }
 
 tooltip {
-    background-color: #232136;
-    border: 2px solid #908caa;
+    background-color: #141415;
+    border: 2px solid #cdcdcd;
 }
 
 #clock,
@@ -30,72 +30,72 @@ tooltip {
 }
 
 #workspaces {
-    background-color: #393552;
+    background-color: #2D2D2F;
     margin: 6px 0px 6px 6px;
-    border: 2px solid #6e6a86;
+    border: 2px solid #cdcdcd;
 }
 
 #workspaces button {
     padding: 2px 4px;
-    background-color: #393552;
-    color: #ea9a97;
+    background-color: #2D2D2F;
+    color: #d8647e;
     margin: 0.25em;
 }
 
 #workspaces button.active {
-    color: #ea9a97;
+    color: #d8647e;
 }
 
 #workspaces button.empty {
-    color: #6e6a86;
+    color: #cdcdcd;
 }
 
 #workspaces button.visible {
-    color: #ea9a97;
+    color: #d8647e;
 }
 
 #workspaces button.urgent {
-    color: #b4637a;
+    color: #BF3050;
 }
 
 #clock {
-    background-color: #393552;
-    border: 2px solid #6e6a86;
-    color: #ea9a97;
+    background-color: #2D2D2F;
+    border: 2px solid #cdcdcd;
+    color: #d8647e;
 }
 
 #tray {
-    background-color: #393552;
-    border: 2px solid #6e6a86;
-    color: #ea9a97;
+    background-color: #2D2D2F;
+    border: 2px solid #cdcdcd;
+    color: #d8647e;
 }
 
 #battery {
-    background-color: #393552;
-    border: 2px solid #6e6a86;
-    color: #ea9a97;
+    background-color: #2D2D2F;
+    border: 2px solid #cdcdcd;
+    color: #d8647e;
 }
 
 #cpu,
 #memory,
 #network,
 #pulseaudio {
-    background-color: #393552;
-    border: 2px solid #6e6a86;
-    color: #ea9a97;
+    background-color: #2D2D2F;
+    border: 2px solid #cdcdcd;
+    color: #d8647e;
 }
 
 #cpu.critical,
 #memory.critical {
-    background-color: #393552;
-    border: 2px solid #6e6a86;
-    color: #b4637a;
+    background-color: #2D2D2F;
+    border: 2px solid #cdcdcd;
+    color: #BF3050;
 }
 
 #battery.warning,
 #battery.critical,
 #battery.urgent {
-    background-color: #393552;
-    border: 2px solid #6e6a86;
-    color: #b4637a;
+    background-color: #2D2D2F;
+    border: 2px solid #cdcdcd;
+    color: #BF3050;
 }
