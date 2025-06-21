@@ -4,7 +4,7 @@
         gnutar zip unzip # compression
         traceroute nettools nmap # networking
         texliveFull zathura # latex
-        hyprlock rofi-wayland grim grimblast swww gowall waybar starship wl-clipboard # ui-ux
+        hyprlock rofi-wayland grim grimblast swww waybar wl-clipboard # ui-ux
         xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs # ui-theme
         xdg-desktop-portal-gtk bibata-cursors # cursors
         sfmono-liga blexmono-liga nerd-fonts.jetbrains-mono nerd-fonts.iosevka # fonts

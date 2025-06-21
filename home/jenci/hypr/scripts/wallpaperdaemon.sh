@@ -4,7 +4,7 @@ swww query
 if [ $? -eq 1 ]; then
   swww-daemon --format xrgb &
 
-  swww img $HOME/Pictures/gowall/budapest.png \
+  swww img $HOME/.local/state/wallpaper/sh2-p.png \
     --transition-type "wipe" \
     --transition-duration 1
 fi
