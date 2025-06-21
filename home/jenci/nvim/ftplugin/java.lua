@@ -27,7 +27,7 @@ local function exepath_or_eval(name, flake_name)
     return vim.fn.system("nix eval --raw nixpkgs#" .. flake_name):gsub("\n", "")
 end
 
-local jdk = exepath_or_eval("jdk23") or exepath_or_eval("jdk11")
+local jdk = exepath_or_eval("jdk23", "jdk23") or exepath_or_eval("jdk11", "jdk11")
 
 -- Define paths using Nix store
 local home = vim.env.HOME
