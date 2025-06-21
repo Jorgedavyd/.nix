@@ -45,9 +45,12 @@ local home = vim.env.HOME
 local jdtls = require("jdtls")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
-local java_path = vim.system("which java"):gsub("\n", "")
+local java_path = vim.fn.system("which java"):gsub("\n", "")
+print(java_path)
 local jdtls_path = get_jdtls_path()
+print(jdtls_path)
 local lombok_path = jdtls_path .. "/../lombok/share/java/lombok.jar"
+print(lombok_path)
 
 local config = {
     cmd = {
