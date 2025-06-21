@@ -40,6 +40,26 @@ _: {
             MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #fe8019"
 
             export PATH="$HOME/.local/scripts/:$PATH"
+            export FZF_DEFAULT_OPTS="
+                --height=99%
+                --layout=reverse
+                --pointer='█'
+                --scrollbar='▌'
+                --highlight-line
+                --color=hl:#f3be7c
+                --color=bg:-1
+                --color=gutter:-1
+                --color=bg+:#252530
+                --color=fg+:#aeaed1
+                --color=hl+:#f3be7c
+                --color=border:#606079
+                --color=prompt:#bb9dbd
+                --color=query:#aeaed1:bold
+                --color=pointer:#aeaed1
+                --color=scrollbar:#aeaed1
+                --color=info:#f3be7c
+                --color=spinner:#7fa563
+                "
 
             setopt APPEND_HISTORY
             setopt HIST_IGNORE_DUPS
