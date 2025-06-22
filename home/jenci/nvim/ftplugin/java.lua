@@ -15,11 +15,6 @@ local function get_jdtls_path()
     return vim.fn.system("nix eval --raw nixpkgs#jdt-language-server"):gsub("\n", "")
 end
 
-local function get_lombok_path()
-    local out = vim.fn.system("nix eval --raw nixpkgs#lombok"):gsub("\n", "")
-    return out .. "/share/java/lombok.jar"
-end
-
 table.insert(bundles, get_debug_bundle())
 vim.list_extend(bundles, get_test_bundles())
 
@@ -52,7 +47,8 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
 local java_path = vim.fn.system("which java"):gsub("\n", "")
 local jdtls_path = get_jdtls_path()
-local lombok_path = get_lombok_path()
+local lombok_path = vim.fn.system("nix eval --raw nixpkgs#lombok") .. "/share/java/lombok.jar"
+
 
 local plugin_dir = jdtls_path .. "/share/java/jdtls/plugins"
 local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher.*x86_64*.jar"
