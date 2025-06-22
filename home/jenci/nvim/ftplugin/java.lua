@@ -58,24 +58,19 @@ if not launcher_jar or launcher_jar == "" then
   return
 end
 
+vim.env.JDTLS_JVM_ARGS = table.concat({
+    "-javaagent:" .. lombok_path,
+    "-Xmx8g",
+    "--add-modules=ALL-SYSTEM",
+    "--add-opens", "java.base/java.util=ALL-UNNAMED",
+    "--add-opens", "java.base/java.lang=ALL-UNNAMED"
+}, " ")
+
 local config = {
     cmd = {
-        java_path,
-        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-        "-Dosgi.bundles.defaultStartLevel=4",
-        "-Declipse.product=org.eclipse.jdt.ls.core.product",
-        "-Dlog.protocol=true",
-        "-Dlog.level=ALL",
-        "-javaagent:" .. lombok_path,
-        "-Xmx4g",
-        "--add-modules=ALL-SYSTEM",
-        "--add-opens", "java.base/java.util=ALL-UNNAMED",
-        "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-        "-jar",
-        launcher_jar,
-        "-data",
-        workspace_dir,
-        "--enable-preview",
+        "jdtls",
+        "-configuration", vim.fn.stdpath("cache") .. "/jdtls/config_linux",
+        "-data", vim.fn.stdpath("cache") .. "/jdtls/workspace",
     },
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle", "flake.nix" }),
     settings = {
