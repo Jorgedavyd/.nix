@@ -11,6 +11,10 @@ local function get_test_bundles()
     return vim.split(vim.fn.glob(ext_root:gsub("\n", "") .. "/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar", 1), "\n")
 end
 
+local function get_jdtls_path()
+    return vim.fn.system("nix eval --raw nixpkgs#jdt-language-server"):gsub("\n", "")
+end
+
 table.insert(bundles, get_debug_bundle())
 vim.list_extend(bundles, get_test_bundles())
 
@@ -35,7 +39,28 @@ local function eval_path(flake_name)
 end
 
 local jdk = vim.fn.getenv("JAVA_HOME")
+
 local jdtls = require("jdtls")
+local jdtls_path = get_jdtls_path()
+local lombok_path = vim.fn.system("nix eval --raw nixpkgs#lombok") .. "/share/java/lombok.jar"
+
+local plugin_dir = jdtls_path .. "/share/java/jdtls/plugins"
+local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher_*.jar"
+
+local launcher_jar = vim.fn.glob(glob_pattern, true, true)[1]
+
+if not launcher_jar or launcher_jar == "" then
+  vim.notify("Cannot find JDTLS launcher jar", vim.log.levels.ERROR)
+  return
+end
+
+vim.env.JDTLS_JVM_ARGS = table.concat({
+    "-javaagent:" .. lombok_path,
+    "-Xmx4g",
+    "--add-modules=ALL-SYSTEM",
+    "--add-opens", "java.base/java.util=ALL-UNNAMED",
+    "--add-opens", "java.base/java.lang=ALL-UNNAMED"
+}, " ")
 
 local config = {
     cmd = {
