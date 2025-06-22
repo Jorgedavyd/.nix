@@ -56,7 +56,7 @@ end
 
 vim.env.JDTLS_JVM_ARGS = table.concat({
     "-javaagent:" .. lombok_path,
-    "-Xmx8g",
+    "-Xmx4g",
     "--add-modules=ALL-SYSTEM",
     "--add-opens", "java.base/java.util=ALL-UNNAMED",
     "--add-opens", "java.base/java.lang=ALL-UNNAMED"
