@@ -50,7 +50,7 @@ local jdtls_path = get_jdtls_path()
 local lombok_path = vim.fn.system("nix eval --raw nixpkgs#lombok") .. "/share/java/lombok.jar"
 
 local plugin_dir = jdtls_path .. "/share/java/jdtls/plugins"
-local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher.gtk.linux.x86_64*.jar"
+local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher_*.jar"
 
 local launcher_jar = vim.fn.glob(glob_pattern, true, true)[1]
 
@@ -76,7 +76,7 @@ local config = {
         "-jar",
         launcher_jar,
         "-configuration",
-        jdtls_path .. "/share/java/jdtls/config_linux",
+        "$HOME/.config/jdtls/config_linux",
         "-data",
         workspace_dir,
         "--enable-preview",
