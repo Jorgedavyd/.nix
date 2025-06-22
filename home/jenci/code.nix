@@ -16,7 +16,7 @@
 
         ## Java
         maven
-        jdt-language-server
+        jdt-language-server ## my own derivation
         vscode-extensions.vscjava.vscode-java-debug
         vscode-extensions.vscjava.vscode-java-test
         lombok

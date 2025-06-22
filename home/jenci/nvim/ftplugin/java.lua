@@ -48,17 +48,10 @@ local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
 local java_path = vim.fn.system("which java"):gsub("\n", "")
 local jdtls_path = get_jdtls_path()
 local lombok_path = vim.fn.system("nix eval --raw nixpkgs#lombok") .. "/share/java/lombok.jar"
+local config_path = jdtls_path .. "/share/java/jdtls/config_linux"
 
 local plugin_dir = jdtls_path .. "/share/java/jdtls/plugins"
-local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher_*.jar"
-
-local launcher_jar = vim.fn.glob(glob_pattern, true, true)[1]
-
-if not launcher_jar or launcher_jar == "" then
-  vim.notify("Cannot find JDTLS launcher jar", vim.log.levels.ERROR)
-  return
-end
-
+local launcher_jar = plugin_dir .. "/org.eclipse.equinox.launcher_*.jar"
 
 local config = {
     cmd = {
@@ -68,15 +61,18 @@ local config = {
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
         "-Dlog.protocol=true",
         "-Dlog.level=ALL",
+        "-Dlog.file=/tmp/jdtls.log",
         "-javaagent:" .. lombok_path,
         "-Xmx4g",
         "--add-modules=ALL-SYSTEM",
         "--add-opens", "java.base/java.util=ALL-UNNAMED",
         "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+        "-Dosgi.sharedConfiguration.area=/tmp/jdtls-osgi",
+        "-Declipse.p2.data.area=/tmp/jdtls-p2",
         "-jar",
         launcher_jar,
         "-configuration",
-        "$HOME/.config/jdtls/config_linux",
+        config_path,
         "-data",
         workspace_dir,
         "--enable-preview",
