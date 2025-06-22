@@ -49,9 +49,9 @@ local java_path = vim.fn.system("which java"):gsub("\n", "")
 local jdtls_path = get_jdtls_path()
 local lombok_path = vim.fn.system("nix eval --raw nixpkgs#lombok") .. "/share/java/lombok.jar"
 
-
 local plugin_dir = jdtls_path .. "/share/java/jdtls/plugins"
-local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher.*x86_64*.jar"
+local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher.gtk.linux.x86_64*.jar"
+
 local launcher_jar = vim.fn.glob(glob_pattern, true, true)[1]
 
 if not launcher_jar or launcher_jar == "" then
