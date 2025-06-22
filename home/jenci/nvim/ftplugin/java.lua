@@ -16,12 +16,14 @@ vim.list_extend(bundles, get_test_bundles())
 
 local jdk = vim.fn.getenv("JAVA_HOME")
 local jdtls = require("jdtls")
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls-workspace/" .. project_name
 
 local config = {
     cmd = {
         "jdtls",
         "-configuration", vim.fn.stdpath("cache") .. "/jdtls/config_linux",
-        "-data", vim.fn.stdpath("cache") .. "/jdtls/workspace",
+        "-data", workspace_dir
     },
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle", "flake.nix" }),
     settings = {
