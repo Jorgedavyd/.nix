@@ -40,8 +40,10 @@ end
 
 local jdk = vim.fn.getenv("JAVA_HOME")
 
--- Define paths using Nix store
+local home = vim.env.HOME
 local jdtls = require("jdtls")
+local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
 local java_path = vim.fn.system("which java"):gsub("\n", "")
 local jdtls_path = get_jdtls_path()
 local lombok_path = vim.fn.system("nix eval --raw nixpkgs#lombok") .. "/share/java/lombok.jar"
@@ -72,13 +74,15 @@ local config = {
         "--add-opens", "java.base/java.util=ALL-UNNAMED",
         "--add-opens", "java.base/java.lang=ALL-UNNAMED",
         "-Dosgi.sharedConfiguration.area=/tmp/jdtls-osgi",
+        string.format("-Dosgi.instance.area=%s", workspace_dir),
+        string.format("-Dosgi.instance.area.default=%s", workspace_dir),
         "-Declipse.p2.data.area=/tmp/jdtls-p2",
         "-jar",
         launcher_jar,
         "-configuration",
         config_path,
         "-data",
-        "/tmp/jdtls_workspace",
+        workspace_dir,
         "--enable-preview",
     },
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle", "flake.nix" }),
