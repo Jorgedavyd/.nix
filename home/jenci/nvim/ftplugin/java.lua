@@ -41,17 +41,21 @@ end
 local jdk = vim.fn.getenv("JAVA_HOME")
 
 -- Define paths using Nix store
-local home = vim.env.HOME
 local jdtls = require("jdtls")
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_dir = home .. "/.cache/jdtls-workspace/" .. project_name
 local java_path = vim.fn.system("which java"):gsub("\n", "")
 local jdtls_path = get_jdtls_path()
 local lombok_path = vim.fn.system("nix eval --raw nixpkgs#lombok") .. "/share/java/lombok.jar"
 local config_path = jdtls_path .. "/share/java/jdtls/config_linux"
 
 local plugin_dir = jdtls_path .. "/share/java/jdtls/plugins"
-local launcher_jar = plugin_dir .. "/org.eclipse.equinox.launcher_*.jar"
+local glob_pattern = plugin_dir .. "/org.eclipse.equinox.launcher_*.jar"
+
+local launcher_jar = vim.fn.glob(glob_pattern, true, true)[1]
+
+if not launcher_jar or launcher_jar == "" then
+  vim.notify("Cannot find JDTLS launcher jar", vim.log.levels.ERROR)
+  return
+end
 
 local config = {
     cmd = {
@@ -74,7 +78,7 @@ local config = {
         "-configuration",
         config_path,
         "-data",
-        workspace_dir,
+        "/tmp/jdtls_workspace",
         "--enable-preview",
     },
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle", "flake.nix" }),
