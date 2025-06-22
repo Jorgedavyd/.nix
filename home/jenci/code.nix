@@ -19,6 +19,7 @@
         jdt-language-server
         vscode-extensions.vscjava.vscode-java-debug
         vscode-extensions.vscjava.vscode-java-test
+        lombok
 
         ## Lua
         lua
