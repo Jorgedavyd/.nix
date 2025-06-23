@@ -20,6 +20,34 @@ return {
 
         local lspconfig = require("lspconfig")
 
+        lspconfig.tsserver.setup {
+            capabilities = capabilities,
+            root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", "flake.nix"),
+            settings = {
+                typescript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayEnumMemberValueHints = true,
+                    },
+                    diagnostics = {
+                        ignoredCodes = { 6133, 6196 },
+                    },
+                },
+                javascript = {
+                    inlayHints = {
+                        includeInlayParameterNameHints = "all",
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                        includeInlayFunctionParameterTypeHints = true,
+                    },
+                },
+            },
+        }
+
         lspconfig.lua_ls.setup {
             capabilities = capabilities,
             settings = {

@@ -21,6 +21,9 @@
         vscode-extensions.vscjava.vscode-java-test
         lombok
 
+        ## TypeScript & JavaScript
+        typescript-language-server
+
         ## Lua
         lua
         lua-language-server
