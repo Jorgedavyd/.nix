@@ -40,11 +40,7 @@ tooltip {
 }
 
 #workspaces button.active {
-    color: #cdcdcd;
-}
-
-#workspaces button.empty {
-    color: #d8647e;
+    color: #BF3050;
 }
 
 #workspaces button.visible {
