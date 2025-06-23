@@ -20,7 +20,7 @@ return {
 
         local lspconfig = require("lspconfig")
 
-        lspconfig.tsserver.setup {
+        lspconfig.ts_ls.setup {
             capabilities = capabilities,
             root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", "flake.nix"),
             settings = {
