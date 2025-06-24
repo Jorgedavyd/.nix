@@ -1,6 +1,9 @@
 _: {
-    hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
+    hardware = {
+        enableAllFirmware = true;
+        graphics = {
+            enable = true;
+            enable32Bit = true;
+        };
     };
 }
