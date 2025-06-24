@@ -40,11 +40,11 @@ tooltip {
 }
 
 #workspaces button.active {
-    color: #BF3050;
+    color: #d8647e;
 }
 
 #workspaces button.empty {
-    color: #BF3050;
+    color: #cdcdcd;
 }
 
 #workspaces button.visible {
@@ -88,6 +88,5 @@ tooltip {
 #battery.critical,
 #battery.urgent {
     background-color: #2D2D2F;
-    border: 2px solid #d8647e;
     color: #BF3050;
 }
