@@ -37,6 +37,6 @@
         nil
 
         ## LLDB (zig, rust, cpp, c)
-        lldb
+        vscode-extensions.vadimcn.vscode-lldb.adapter
     ];
 }

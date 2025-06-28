@@ -39,11 +39,40 @@ return {
             callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
         end
 
-        dap.adapters.codelldb = {
-          type = 'executable',
-          command = vim.fn.resolve(vim.fn.stdpath("data") .. "/mason/packages/codelldb/adapter/codelldb"),
-          name = 'codelldb'
-        }
+        local exepath_or_binary = function(binary)
+            local exepath = vim.fn.exepath(binary)
+            if #exepath > 0 then return exepath else return nil end
+        end
+
+        local get_lldb_adapter = function()
+            local result
+            if vim.fn.executable('codelldb') == 1 then
+                result = {
+                    type = 'server',
+                    host = '127.0.0.1',
+                    port = '${port}',
+                    executable = {
+                        command = exepath_or_binary('codelldb'),
+                        args = { '--port', '${port}' },
+                    },
+                }
+            else
+                local has_lldb_dap = vim.fn.executable('lldb-dap') == 1
+                local has_lldb_vscode = vim.fn.executable('lldb-vscode') == 1
+                if not has_lldb_dap and not has_lldb_vscode then
+                    return result
+                end
+                local command = has_lldb_dap and 'lldb-dap' or 'lldb-vscode'
+                result = {
+                    type = 'executable',
+                    command = exepath_or_binary(command),
+                    name = 'lldb',
+                }
+            end
+            return result
+        end
+
+        dap.adapters.codelldb = get_lldb_adapter()
 
         dap.configurations.cpp = {
             {
@@ -62,6 +91,6 @@ return {
         dap.configurations.c = dap.configurations.cpp
         dap.configurations.zig = dap.configurations.cpp
         dap.configurations.cuda = dap.configurations.cpp
-        dap.configurations.rust = dap.configurations.cpp
+        -- dap.configurations.rust = dap.configurations.cpp (set in rustaceanvim)
     end,
 }

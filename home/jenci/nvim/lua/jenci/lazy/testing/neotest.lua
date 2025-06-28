@@ -14,30 +14,36 @@ return {
         "alfaix/neotest-gtest",
         "nvim-treesitter/nvim-treesitter"
     },
-    config = function()
-        local neotest = require("neotest")
-        neotest.setup({
-            adapters = {
-                require("neotest-vitest"),
-                require("neotest-plenary"),
-                require("neotest-python")({
-                    runner = "pytest",
-                    python = "/usr/bin/python3.10",
-                }),
-                require("rustaceanvim.neotest"),
-                require("neotest-zig"),
-                require("neotest-gtest").setup({}),
+    opts = {
+        adapters = {
+            ["neotest-vitest"] = {},
+            ["neotest-plenary"] = {},
+            ["neotest-python"] = {
+                runner = "pytest",
+                python = vim.fn.exepath("python"),
             },
-            discovery = {
-                filter_dir = function(name, rel_path, root)
-                    return name ~= "env"
+            ["rustaceanvim.neotest"] = {},
+            ["neotest-zig"] = {},
+            ["neotest-gtest"] = {},
+            ["neotest-java"] = {},
+            ["neotest-jest"] = {
+                jestCommand = "npm test --",
+                jestConfigFile = "custom.jest.config.ts",
+                env = { CI = true },
+                cwd = function(_)
+                    return vim.fn.getcwd()
                 end,
             }
-        })
-    end,
+        },
+        discovery = {
+            filter_dir = function(name, rel_path, root)
+                return name ~= "env"
+            end,
+        }
+    },
     keys = {
         {
-            "<leader>ns", function()
+            "<leader>sm", function()
                 require("neotest").summary.toggle()
             end
         },
@@ -47,12 +53,12 @@ return {
             end
         },
         {
-            "<leader>nr", function()
+            "<leader>r", function()
                 require("neotest").run.run({strategy = 'dap'})
             end
         },
         {
-            "<leader>no", function()
+            "<leader>ot", function()
                 require("neotest").output.open({
                     enter = true,
                     last_run = true,
@@ -61,7 +67,7 @@ return {
             end
         },
         {
-            "<leader>nir", function()
+            "<leader>rp", function()
                 require("neotest").run.run({
                     path,
                     strategy = 'dap'
