@@ -8,7 +8,7 @@ return {
                 "rust", "c", "cuda", "cpp", "zig",
                 "python", "lua",
                 "java", "sql", "bash",
-                "javascript", "typescript",
+                "javascript", "typescript", "svelte",
                 "vimdoc", "vim",
                 "make", "cmake", "markdown_inline",
                 "csv",

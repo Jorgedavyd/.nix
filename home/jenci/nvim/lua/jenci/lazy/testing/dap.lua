@@ -91,6 +91,25 @@ return {
         dap.configurations.c = dap.configurations.cpp
         dap.configurations.zig = dap.configurations.cpp
         dap.configurations.cuda = dap.configurations.cpp
-        -- dap.configurations.rust = dap.configurations.cpp (set in rustaceanvim)
+        dap.configurations.java = {
+            {
+                type = 'java',
+                request = 'launch',
+                name = "Launch Current File",
+                mainClass = function()
+                    return vim.fn.input('Main class > ', '', 'file')
+                end,
+            }
+        }
+
+        dap.adapters.java = function(callback)
+            require("jdtls").setup_dap({ hotcodereplace = 'auto' })
+            callback({
+                type = 'server',
+                host = '127.0.0.1',
+                port = '${port}'
+            })
+        end
+
     end,
 }

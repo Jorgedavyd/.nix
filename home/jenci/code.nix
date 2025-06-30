@@ -16,7 +16,7 @@
 
         ## Java
         maven
-        jdt-language-server-upstream
+        jdt-language-server
         vscode-extensions.vscjava.vscode-java-debug
         vscode-extensions.vscjava.vscode-java-test
         lombok

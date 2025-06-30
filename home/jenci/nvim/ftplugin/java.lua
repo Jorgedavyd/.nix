@@ -14,31 +14,46 @@ end
 table.insert(bundles, get_debug_bundle())
 vim.list_extend(bundles, get_test_bundles())
 
-local jdk = vim.fn.getenv("JAVA_HOME")
 local jdtls = require("jdtls")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls-workspace/" .. project_name
 
 local config = {
     cmd = {
-        "jdtls",
+        "java",
+        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+        "-Dosgi.bundles.defaultStartLevel=4",
+        "-Declipse.product=org.eclipse.jdt.ls.core.product",
+        "-Dlog.level=ALL",
+        "-Xmx8G",
+        "--add-modules=ALL-SYSTEM",
+        "--add-opens", "java.base/java.util=ALL-UNNAMED",
+        "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+        "-jar", vim.fn.getenv("JDLTS_LAUNCHER"),
+        "-javaagent:" .. vim.fn.getenv("LOMBOK_JAR"),
         "-configuration", vim.fn.stdpath("cache") .. "/jdtls/config_linux",
         "-data", workspace_dir
     },
-    root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle", "flake.nix" }),
+    root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle" }),
     settings = {
         java = {
-            home = jdk,
+            home = vim.fn.getenv("JAVA_HOME"),
             eclipse = { downloadSources = true },
-            configuration = {
-                updateBuildConfiguration = "interactive",
-            },
+            configuration = { updateBuildConfiguration = "interactive" },
             maven = { downloadSources = true },
             implementationsCodeLens = { enabled = true },
             referencesCodeLens = { enabled = true },
             references = { includeDecompiledSources = true },
             signatureHelp = { enabled = true },
-            format = { enabled = true },
+            contentProvider = { preferred = "fernflower" },
+            saveActions = { organizeImports = true },
+            format = {
+                enabled = true,
+                settings = {
+                    url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+                    profile = "GoogleStyle",
+                },
+            },
             completion = {
                 favoriteStaticMembers = {
                     "org.hamcrest.MatcherAssert.assertThat",
@@ -60,6 +75,9 @@ local config = {
                 },
                 useBlocks = true,
             },
+            inlayHints = {
+                parameterNames = { enabled = "all" },
+            }
         },
     },
     capabilities = vim.tbl_deep_extend(
