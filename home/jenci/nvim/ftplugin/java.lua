@@ -11,15 +11,24 @@ local function get_test_bundles()
     return vim.split(vim.fn.glob(ext_root:gsub("\n", "") .. "/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar", 1), "\n")
 end
 
+local function get_paths()
+    local ext_root = vim.fn.system("nix eval --raw nixpkgs#lombok")
+    local lombok_jar = ext_root:gsub("\n", "") .. "/share/java/lombok.jar"
+    local base = os.getenv("HOME") .. "/java/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/"
+    local jdtls_launcher = vim.fn.glob(base .. "org.eclipse.equinox.launcher_*.jar", 1)
+    local config_dir = vim.fn.resolve(base .. "/../config_linux")
+    return jdtls_launcher, config_dir, lombok_jar
+end
+
 table.insert(bundles, get_debug_bundle())
 vim.list_extend(bundles, get_test_bundles())
 
 local jdtls = require("jdtls")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls-workspace/" .. project_name
+local jdtls_launcher, config_dir, lombok_jar = get_paths()
 
-local config = {
-    cmd = {
+local cmd = {
         "java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
@@ -29,17 +38,20 @@ local config = {
         "--add-modules=ALL-SYSTEM",
         "--add-opens", "java.base/java.util=ALL-UNNAMED",
         "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-        "-jar", vim.fn.getenv("JDLTS_LAUNCHER"),
-        "-javaagent:" .. vim.fn.getenv("LOMBOK_JAR"),
-        "-configuration", vim.fn.stdpath("cache") .. "/jdtls/config_linux",
+        "-jar", jdtls_launcher,
+        "-javaagent:" .. lombok_jar,
+        "-configuration", config_dir,
         "-data", workspace_dir
-    },
+    }
+
+local config = {
+    cmd = cmd,
     root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle" }),
     settings = {
         java = {
             home = vim.fn.getenv("JAVA_HOME"),
             eclipse = { downloadSources = true },
-            configuration = { updateBuildConfiguration = "interactive" },
+            configuration = { updateBuildConfiguration = "disabled" },
             maven = { downloadSources = true },
             implementationsCodeLens = { enabled = true },
             referencesCodeLens = { enabled = true },

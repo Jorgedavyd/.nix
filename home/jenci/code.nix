@@ -20,6 +20,7 @@
         vscode-extensions.vscjava.vscode-java-debug
         vscode-extensions.vscjava.vscode-java-test
         lombok
+        jdk23
 
         ## TypeScript, JavaScript, Svelte
         typescript-language-server
