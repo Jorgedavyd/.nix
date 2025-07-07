@@ -24,7 +24,8 @@
 
         ## TypeScript, JavaScript, Svelte
         typescript-language-server
-        svelte-language-server
+        tailwindcss-language-server
+        nodejs
 
         ## Lua
         lua

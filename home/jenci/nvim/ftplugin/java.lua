@@ -51,7 +51,11 @@ local config = {
         java = {
             home = vim.fn.getenv("JAVA_HOME"),
             eclipse = { downloadSources = true },
-            configuration = { updateBuildConfiguration = "disabled" },
+            compile = { nullAnalysis = { mode = "automatic" } },
+            configuration = {
+                updateBuildConfiguration = "interactive",
+                compiler = { annotationProcessing = { enabled = true }},
+            },
             maven = { downloadSources = true },
             implementationsCodeLens = { enabled = true },
             referencesCodeLens = { enabled = true },
