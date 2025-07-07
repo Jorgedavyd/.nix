@@ -3,7 +3,7 @@ require("jenci.remap")
 require("jenci.lazy_init")
 
 local augroup = vim.api.nvim_create_augroup
-local JenciGroup = augroup('jenci', {})
+local JenciAuGroup = augroup('jenci', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -24,30 +24,31 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufWritePre"}, {
-    group = JenciGroup,
+    group = JenciAuGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
 autocmd('LspAttach', {
-    group = JenciGroup,
+    group = JenciAuGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         if not vim.endswith(e.file, "rs") then
-            vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-            vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-            vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+            vim.keymap.set("n", "K", function() vim.cmd[[Lspsaga hover_doc]] end, opts)
+            vim.keymap.set("n", "<leader>vd", function() vim.cmd[[Lspsaga show_line_diagnostics ]] end, opts)
+            vim.keymap.set("n", "<leader>vca", function() vim.cmd[[Lspsaga code_action ]] end, opts)
         end
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("i", "<c-H>", function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set("n", "gd", function() vim.cmd[[Lspsaga goto_definition]] end, opts)
+        vim.keymap.set("n", "gD", function() vim.cmd[[Lspsaga peek_definition]] end, opts)
+        vim.keymap.set("n", "<leader>ic", function() vim.cmd[[Lspsaga incoming_calls]] end, opts)
+        vim.keymap.set("n", "<leader>oc", function() vim.cmd[[Lspsaga outgoing_calls]] end, opts)
+        vim.keymap.set("n", "<leader>vrn", function() vim.cmd[[Lspsaga rename]] end, opts)
+        vim.keymap.set("i", "<c-h>", function() vim.lsp.buf.signature_help() end, opts)
     end
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    group = JenciGroup,
+    group = JenciAuGroup,
     pattern = {"tex", "md"},
     callback = function()
         vim.opt_local.wrap = true
