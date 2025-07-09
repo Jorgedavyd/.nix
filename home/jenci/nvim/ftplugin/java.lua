@@ -1,27 +1,29 @@
 local bundles = {}
 
-local function get_debug_bundle()
-    local ext_root = vim.fn.system("nix eval --raw nixpkgs#vscode-extensions.vscjava.vscode-java-debug")
-    local jar_path = ext_root:gsub("\n", "") .. "/share/vscode/extensions/vscjava.vscode-java-debug/server/com.microsoft.java.debug.plugin-*.jar"
-    return vim.fn.glob(jar_path, 1)
+local function get_debug_bundles()
+    return vim.fn.glob(
+        vim.fn.resolve(os.getenv("HOME") .. "/java/java-debug/com.microsoft.java.debug.plugin/target/*.jar")
+    )
 end
 
 local function get_test_bundles()
-    local ext_root = vim.fn.system("nix eval --raw nixpkgs#vscode-extensions.vscjava.vscode-java-test")
-    return vim.split(vim.fn.glob(ext_root:gsub("\n", "") .. "/share/vscode/extensions/vscjava.vscode-java-test/server/*.jar", 1), "\n")
+    return vim.fn.glob(
+        vim.fn.resolve(os.getenv("HOME") .. "/java/vscode-java-test/java-extension/com.microsoft.java.test.plugin/target/com.microsoft.java.test.plugin-*.jar"), 1
+    )
 end
 
 local function get_paths()
-    local ext_root = vim.fn.system("nix eval --raw nixpkgs#lombok")
-    local lombok_jar = ext_root:gsub("\n", "") .. "/share/java/lombok.jar"
-    local base = os.getenv("HOME") .. "/java/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/"
-    local jdtls_launcher = vim.fn.glob(base .. "org.eclipse.equinox.launcher_*.jar", 1)
+    local lombok_jar = vim.fn.resolve(os.getenv("HOME") .. "/java/lombok.jar")
+    local base = vim.fn.resolve(os.getenv("HOME") .. "/java/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/")
+    local jdtls_launcher = vim.fn.glob(
+        vim.fn.resolve(base .. "/org.eclipse.equinox.launcher_*.jar")
+    )
     local config_dir = vim.fn.resolve(base .. "/../config_linux")
     return jdtls_launcher, config_dir, lombok_jar
 end
 
-table.insert(bundles, get_debug_bundle())
-vim.list_extend(bundles, get_test_bundles())
+table.insert(bundles, get_debug_bundles())
+table.insert(bundles, get_test_bundles())
 
 local jdtls = require("jdtls")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
@@ -30,16 +32,16 @@ local jdtls_launcher, config_dir, lombok_jar = get_paths()
 
 local cmd = {
         "java",
+        "-javaagent:" .. lombok_jar,
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-Dosgi.bundles.defaultStartLevel=4",
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
         "-Dlog.level=ALL",
-        "-Xmx8G",
+        "-Xmx4G",
         "--add-modules=ALL-SYSTEM",
         "--add-opens", "java.base/java.util=ALL-UNNAMED",
         "--add-opens", "java.base/java.lang=ALL-UNNAMED",
         "-jar", jdtls_launcher,
-        "-javaagent:" .. lombok_jar,
         "-configuration", config_dir,
         "-data", workspace_dir
     }

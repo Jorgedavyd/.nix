@@ -38,7 +38,7 @@ autocmd('LspAttach', {
             vim.keymap.set("n", "<leader>vd", function() vim.cmd[[Lspsaga show_line_diagnostics ]] end, opts)
             vim.keymap.set("n", "<leader>vca", function() vim.cmd[[Lspsaga code_action ]] end, opts)
         end
-        vim.keymap.set("n", "gd", function() vim.cmd[[Lspsaga goto_definition]] end, opts)
+        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set("n", "gD", function() vim.cmd[[Lspsaga peek_definition]] end, opts)
         vim.keymap.set("n", "<leader>ic", function() vim.cmd[[Lspsaga incoming_calls]] end, opts)
         vim.keymap.set("n", "<leader>oc", function() vim.cmd[[Lspsaga outgoing_calls]] end, opts)
