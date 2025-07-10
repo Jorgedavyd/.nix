@@ -22,28 +22,39 @@ return {
     },
 
     config = function()
-        require('telescope').setup({
+        require("telescope").setup({
             defaults = {
                 sorting_strategy = "ascending",
                 layout_strategy = "horizontal",
+                dynamic_preview_title = true,
                 layout_config = {
-                    prompt_position = "top",
-                    preview_cutoff = 120,
+                    width = 0.98,
+                    height = 0.95,
+                    horizontal = {
+                        preview_width = 0.5,
+                        mirror = false,
+                    },
+                    preview_cutoff = 1,
                 },
                 mappings = {
                     i = {
                         ["<C-j>"] = "move_selection_next",
                         ["<C-k>"] = "move_selection_previous",
+                        ["<C-h>"] = "results_scrolling_left",
+                        ["<C-l>"] = "results_scrolling_right",
+                        ["<C-t>"] = "preview_scrolling_left",
+                        ["<C-y>"] = "preview_scrolling_right",
                     },
                 },
             },
             pickers = {
                 colorscheme = {
                     enable_preview = true,
-                    ignore_builtins = true
-                }
-            }
+                    ignore_builtin = true,
+                },
+            },
         })
+
     end
 }
 
