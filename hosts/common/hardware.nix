@@ -6,4 +6,5 @@ _: {
             enable32Bit = true;
         };
     };
+    nix.optimise.automatic = true;
 }

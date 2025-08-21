@@ -96,6 +96,8 @@ return {
                 type = 'java',
                 request = 'launch',
                 name = "Launch Current File",
+                host = "127.0.0.1",
+                port = "${port}",
                 mainClass = function()
                     return vim.fn.input('Main class > ', '', 'file')
                 end,
