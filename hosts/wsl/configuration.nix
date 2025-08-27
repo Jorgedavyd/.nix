@@ -5,7 +5,6 @@
         ./packages.nix
         ./services.nix
         ../common/user.nix
-        ../common/work.nix
     ];
 
     home-manager = {
@@ -27,7 +26,7 @@
                 gnutar zip unzip
                 traceroute nettools nmap
                 texliveFull zathura
-                tmux starship
+                tmux
             ];
 
             programs = {
