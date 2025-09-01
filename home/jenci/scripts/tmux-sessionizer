@@ -2,7 +2,7 @@
 
 [[ -z $1 ]] && selected=$(find ~/projects /data/study ~/telecel ~/oym /etc/nixos -type d -name '*.git' ! -path '*tmux*' -exec dirname {} + | fzf) || selected="$1"
 [[ -z $selected || ! -d $selected ]] && exit 0
-selected_name=$(basename "$selected" | tr . _)
+selected_name=$(basename "$selected" | tr . _ | tr - _)
 
 create_session() {
     tmux new-session -d -s "$selected_name" -c "$selected"

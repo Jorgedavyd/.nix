@@ -12,6 +12,7 @@
         obsidian ghostty tmux # code
         onedrive # file-manager
         nix-prefetch-scripts nix-prefetch-github nix-prefetch-git nix-prefetch-docker # derivation utils
+        gimp3 ## image editor
     ];
 
     fonts.fontconfig.enable = true;
