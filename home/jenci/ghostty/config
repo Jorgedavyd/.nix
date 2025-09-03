@@ -22,7 +22,7 @@ selection-background = #252530
 selection-foreground = #cdcdcd
 
 shell-integration = zsh
-font-family = "Liga SFMono Nerd Font"
+font-family = "JetBrainsMono Nerd Font"
 window-inherit-font-size = true
 font-size = 18
 
