@@ -13,13 +13,14 @@
         backupFileExtension = "backup";
         users.${username} = _: {
             programs.home-manager.enable = true;
-            home.username = "${username}";
+            home.username = username;
             home.homeDirectory = "/home/${username}";
             home.stateVersion = "25.05";
             imports = [
                 ../../home/${username}/editor.nix
-                ../../home/${username}/shell.nix
                 ../../home/${username}/code.nix
+                ../../home/${username}/xdg.nix
+                ./shell.nix
             ];
             home.packages = with pkgs; [
                 yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr # cli
@@ -50,7 +51,7 @@
         extraSpecialArgs = { inherit inputs; };
     };
     wsl.enable = true;
-    wsl.defaultUser = "${username}";
+    wsl.defaultUser = username;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     system.stateVersion = "25.05";
 }
