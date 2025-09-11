@@ -19,21 +19,22 @@
             imports = [
                 ../../home/${username}/editor.nix
                 ../../home/${username}/shell.nix
-                ../../home/${username}/xdg.nix
+                ../../home/${username}/code.nix
             ];
             home.packages = with pkgs; [
-                yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr
-                gnutar zip unzip
-                traceroute nettools nmap
-                texliveFull zathura
-                tmux
+                yq jq gnused gawk fzf findutils rsync fd ripgrep bat tldr # cli
+                gnutar zip unzip # compression
+                traceroute nettools nmap # networking
+                btop # monitoring
+                ghostty tmux # code
+                nix-prefetch-scripts nix-prefetch-github nix-prefetch-git nix-prefetch-docker # derivation utils
             ];
 
             programs = {
                 git = {
                     enable = true;
-                    userName = "Jorgedavyd";
-                    userEmail = "jorged.encyso@gmail.com";
+                    userName = "Enciso Martinez, Jorge David";
+                    userEmail = "jorge.enciso@tigo.net.py";
                     extraConfig = {
                         init.defaultBranch = "main";
                         pull.rebase = true;
