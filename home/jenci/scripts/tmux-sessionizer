@@ -1,8 +1,10 @@
 #!/run/current-system/sw/bin/bash
 
-[[ -z $1 ]] && selected=$(find ~/projects /data/study ~/telecel ~/oym /etc/nixos -type d -name '*.git' -maxdepth 4 ! -path '*tmux*' -exec dirname {} + | fzf) || selected="$1"
+[[ -z $1 ]] && selected=$(find ~/projects /data/study /etc/nixos -type d -name '*.git' -maxdepth 4 ! -path '*tmux*' -exec dirname {} + | fzf) || selected="$1"
 [[ -z $selected || ! -d $selected ]] && exit 0
 selected_name=$(basename "$selected" | tr . _ | tr - _)
+hash=$(echo -n "$selected" | md5sum | cut -c1-6)
+selected_name="${selected_name}_${hash}"
 
 create_session() {
     tmux new-session -d -s "$selected_name" -c "$selected"
