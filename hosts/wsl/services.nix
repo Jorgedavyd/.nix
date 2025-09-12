@@ -3,6 +3,6 @@ _: {
         openssh.enable = true;
         dbus.enable = true;
     };
-    virtualization.docker.enable = true;
+    virtualisation.docker.enable = true;
 }
 
