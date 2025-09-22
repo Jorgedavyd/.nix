@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+_: {
     home.file.".local/scripts" = {
         source = ./scripts;
         recursive = true;
@@ -39,9 +39,7 @@
             MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady block"
             MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #fe8019"
 
-            export PATH="$HOME/.local/scripts/:$PATH"
-            export JDTLS_LAUNCHER=$(find ${pkgs.jdt-language-server}/share/java/jdtls/plugins -name "org.eclipse.equinox.launcher_*.jar" | head -n 1)
-            export LOMBOK_JAR="${pkgs.lombok}/share/java/lombok.jar"
+            export PATH="$HOME/.local/scripts:$PATH"
 
             export FZF_DEFAULT_OPTS="
                 --height=99%

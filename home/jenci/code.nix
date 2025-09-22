@@ -16,11 +16,7 @@
 
         ## Java
         maven
-        jdt-language-server
-        vscode-extensions.vscjava.vscode-java-debug
-        vscode-extensions.vscjava.vscode-java-test
-        lombok
-        jdk23
+        jdk21
 
         ## TypeScript, JavaScript, Svelte
         typescript-language-server
@@ -41,5 +37,8 @@
 
         ## LLDB (zig, rust, cpp, c)
         vscode-extensions.vadimcn.vscode-lldb.adapter
+
+        ## Python
+        python311
     ];
 }

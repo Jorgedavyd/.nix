@@ -12,43 +12,27 @@ local function get_test_bundles()
     )
 end
 
-local function get_paths()
-    local lombok_jar = vim.fn.resolve(os.getenv("HOME") .. "/java/lombok.jar")
-    local base = vim.fn.resolve(os.getenv("HOME") .. "/java/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository/plugins/")
-    local jdtls_launcher = vim.fn.glob(
-        vim.fn.resolve(base .. "/org.eclipse.equinox.launcher_*.jar")
-    )
-    local config_dir = vim.fn.resolve(base .. "/../config_linux")
-    return jdtls_launcher, config_dir, lombok_jar
-end
-
 table.insert(bundles, get_debug_bundles())
 table.insert(bundles, get_test_bundles())
 
 local jdtls = require("jdtls")
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls-workspace/" .. project_name
-local jdtls_launcher, config_dir, lombok_jar = get_paths()
+local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/workspace/" .. project_name
+local config_dir = vim.fn.stdpath("cache") .. "/jdtls/config_linux"
+
+if vim.fn.isdirectory(workspace_dir) == 0 then
+    vim.fn.mkdir(workspace_dir, "p")
+end
 
 local cmd = {
-        "java",
-        "-javaagent:" .. lombok_jar,
-        "-Declipse.application=org.eclipse.jdt.ls.core.id1",
-        "-Dosgi.bundles.defaultStartLevel=4",
-        "-Declipse.product=org.eclipse.jdt.ls.core.product",
-        "-Dlog.level=ALL",
-        "-Xmx4G",
-        "--add-modules=ALL-SYSTEM",
-        "--add-opens", "java.base/java.util=ALL-UNNAMED",
-        "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-        "-jar", jdtls_launcher,
-        "-configuration", config_dir,
-        "-data", workspace_dir
-    }
+    "jdtls",
+    "-configuration", config_dir,
+    "-data", workspace_dir
+}
 
 local config = {
     cmd = cmd,
-    root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle" }),
+    root_dir = require("jdtls.setup").find_root({ "mvnw", "flake.nix", ".git", "gradlew" }),
     settings = {
         java = {
             home = vim.fn.getenv("JAVA_HOME"),
