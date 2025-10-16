@@ -16,7 +16,6 @@
 
         ## Java
         maven
-        jdk21
 
         ## TypeScript, JavaScript, Svelte
         typescript-language-server
