@@ -13,6 +13,7 @@
         onedrive # file-manager
         nix-prefetch-scripts nix-prefetch-github nix-prefetch-git nix-prefetch-docker # derivation utils
         gimp3 ## image editor
+        openfortivpn openfortivpn-webview
     ];
 
     fonts.fontconfig.enable = true;
