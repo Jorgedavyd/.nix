@@ -39,8 +39,7 @@ _: {
             MODE_CURSOR_VISUAL="$MODE_CURSOR_VICMD steady block"
             MODE_CURSOR_VLINE="$MODE_CURSOR_VISUAL #fe8019"
 
-            export PATH="$HOME/java/graalvm/bin:$HOME/.local/scripts:$HOME/java/eclipse.jdt.ls/bin:$PATH"
-            export JAVA_HOME="$HOME/java/graalvm"
+            export PATH="$HOME/.local/scripts:$HOME/java/eclipse.jdt.ls/bin:$PATH"
 
             export FZF_DEFAULT_OPTS="
                 --height=99%
