@@ -40,5 +40,8 @@
 
         ## Python
         python311
+
+        ## Devops
+        kubectl
     ];
 }

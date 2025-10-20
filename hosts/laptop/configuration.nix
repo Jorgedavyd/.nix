@@ -3,5 +3,6 @@ _: {
         ../common/default.nix
         ./hardware-configuration.nix
         ./wm.nix
+        ./services.nix
     ];
 }
