@@ -1,4 +1,7 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
+    hardware.opengl.extraPackages = [
+        pkgs.nvidia-vaapi-driver
+    ];
     hardware.nvidia = {
         modesetting.enable = true;
         powerManagement = {
