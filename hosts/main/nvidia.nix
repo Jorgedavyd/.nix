@@ -1,16 +1,11 @@
-{ config, pkgs, ... }: {
+{ pkgs, lib, ... }: {
     hardware.opengl.extraPackages = [
         pkgs.nvidia-vaapi-driver
     ];
     hardware.nvidia = {
-        modesetting.enable = true;
-        powerManagement = {
-            enable = false;
-            finegrained = false;
-        };
-        open = false;
-        nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+        modesetting.enable = lib.mkDefault true;
+        powerManagement.enable = true;
+        open = true;
     };
     boot.blacklistedKernelModules = [ "nouveau" "nvidiafb" ];
 }
