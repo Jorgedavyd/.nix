@@ -1,6 +1,5 @@
 _: {
     environment.sessionVariables = {
-        AQ_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
         GBM_BACKEND = "nvidia-drm";
         __GL_VRR_ALLOWED = "0";
         __GLX_VENDOR_LIBRARY_NAME = "nvidia";
