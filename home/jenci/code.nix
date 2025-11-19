@@ -2,9 +2,10 @@
     ## Compilers, Interpreters, LSPs, Formatters and testing
     home.packages = with pkgs; [
         ## Rust
+        rustc
         cargo
         rust-analyzer
-        rustPackages.rustfmt
+        rustfmt
 
         ## C/C++
         clang-tools

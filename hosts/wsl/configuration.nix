@@ -17,7 +17,6 @@
             home.homeDirectory = "/home/${username}";
             home.stateVersion = "25.05";
             imports = [
-                ../../home/${username}/editor.nix
                 ../../home/${username}/code.nix
                 ../../home/${username}/xdg.nix
                 ./shell.nix
@@ -46,6 +45,7 @@
                     enable = true;
                     nix-direnv.enable = true;
                 };
+                neovim.enable = true;
             };
         };
         extraSpecialArgs = { inherit inputs; };

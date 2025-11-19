@@ -14,6 +14,20 @@ return {
         version = '^6',
         lazy = false,
         ft = { "rust" },
+        config = function ()
+            vim.g.rustaceanvim = {
+                tools = {
+                },
+                server = {
+                    default_settings = {
+                        ['rust-analyzer'] = {
+                        }
+                    }
+                },
+                dap = {
+                }
+            }
+        end
     },
     {
         'saecki/crates.nvim',

@@ -7,12 +7,11 @@
             url = "github:nix-community/home-manager/release-25.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         dev-pkgs.url = "github:jorgedavyd/nix-dev";
         nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     };
 
-    outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, dev-pkgs, nixos-wsl, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, dev-pkgs, nixos-wsl, ... }@inputs:
         let
             inherit (nixpkgs) lib;
 
@@ -21,10 +20,7 @@
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
-                overlays = [
-                    neovim-nightly-overlay.overlays.default
-                    dev-pkgs.overlays.default
-                ];
+                overlays = [ dev-pkgs.overlays.default ];
             };
 
             defaultSettings = {

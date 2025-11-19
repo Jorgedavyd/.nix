@@ -8,7 +8,6 @@ _: {
         ./programs.nix
         ./xdg.nix
         ./shell.nix
-        ./editor.nix
         ./code.nix
         ./browser.nix
         ./git.nix

@@ -19,12 +19,11 @@ return {
                 cmp_lsp.default_capabilities()
             )
 
-            local lspconfig = require("lspconfig")
+            vim.lsp.config("tailwindcss", {})
 
-            lspconfig.tailwindcss.setup {}
-            lspconfig.ts_ls.setup {
+            vim.lsp.config("ts_ls", {
                 capabilities = capabilities,
-                root_dir = lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", "flake.nix"),
+                root_markers = { 'package.json', '.yarn', 'tsconfig.json', 'jsconfig.json', { "flake.nix", "flake.lock", ".git" } },
                 settings = {
                     typescript = {
                         inlayHints = {
@@ -48,9 +47,9 @@ return {
                         },
                     },
                 },
-            }
+            })
 
-            lspconfig.lua_ls.setup {
+            vim.lsp.config("lua_ls", {
                 capabilities = capabilities,
                 settings = {
                     Lua = {
@@ -59,18 +58,18 @@ return {
                         },
                     },
                 },
-            }
+            })
 
-            lspconfig.nil_ls.setup {
+            vim.lsp.config("nil_ls", {
                 capabilities = capabilities,
-                root_dir = lspconfig.util.root_pattern("flake.nix"),
+                root_markers = { 'flake.nix', '.git' },
                 filetypes = { "nix" },
                 cmd = { "nil" },
-            }
+            })
 
-            lspconfig.zls.setup {
+            vim.lsp.config("zls", {
                 capabilities = capabilities,
-                root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
+                root_markers = { "build.zig", "zls.json", { "flake.nix", "flake.lock", ".git" } },
                 settings = {
                     zls = {
                         enable_inlay_hints = true,
@@ -78,11 +77,11 @@ return {
                         warn_style = true,
                     },
                 },
-            }
+            })
             vim.g.zig_fmt_parse_errors = 0
             vim.g.zig_fmt_autosave = 0
 
-            lspconfig.clangd.setup {
+            vim.lsp.config("clangd", {
                 capabilities = capabilities,
                 filetypes = { "c", "cpp", "cuda", "cu", "h" },
                 cmd = {
@@ -91,7 +90,7 @@ return {
                     "--clang-tidy",
                     "--compile-commands-dir=build",
                 },
-                root_dir = lspconfig.util.root_pattern(".git", "compile_commands.json", "compile_flags.txt", "CMakeLists.txt"),
+                root_markers = { "compile_commands.json", "compile_flags.txt", "CMakeLists.txt", { "flake.nix", "flake.lock", ".git" } },
                 settings = {
                     clangd = {
                         fallbackFlags = {
@@ -103,9 +102,9 @@ return {
                         },
                     },
                 },
-            }
+            })
 
-            lspconfig.pyright.setup {
+            vim.lsp.config("pyright", {
                 capabilities = capabilities,
                 settings = {
                     python = {
@@ -116,7 +115,17 @@ return {
                         },
                     },
                 },
-            }
+            })
+
+            vim.lsp.enable({
+                "tailwindcss",
+                "ts_ls",
+                "lua_ls",
+                "nil_ls",
+                "zls",
+                "clangd",
+                "pyright",
+            })
         end,
     },
     {
