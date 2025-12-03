@@ -44,5 +44,11 @@
 
         ## Devops
         kubectl
+
+        ## VSCode
+        vscode-fhs
+
+        ## Tiltfile
+        starpls
     ];
 }

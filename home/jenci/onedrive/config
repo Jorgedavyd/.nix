@@ -1,0 +1,3 @@
+sync_dir = "/data/OneDrive"
+skip_dir = ""
+monitor_interval = "300"

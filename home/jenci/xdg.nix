@@ -11,9 +11,10 @@
             "ghostty/config".source = ./ghostty/config;
             "tmux/tmux.conf".source = ./tmux/tmux.conf;
             "zathura/zathurarc".source = ./zathura/zathurarc;
-            "hypr".source = ./hypr;
             "waybar".source = ./waybar;
+            "hypr".source = ./hypr;
             "rofi".source = ./rofi;
+            "onedrive/config".source = ./onedrive/config;
         };
         userDirs = {
             enable = true;

@@ -117,6 +117,24 @@ return {
                 },
             })
 
+            vim.filetype.add({
+                filename = {
+                    ["Tiltfile"] = "starlark",
+                    ["tiltfile"] = "starlark",
+                },
+                extension = {
+                    star = "starlark",
+                    bzl = "starlark",
+                }
+            })
+
+            vim.lsp.config("starlark_lsp", {
+                cmd = { "tilt", "lsp", "start" },
+                filetypes = { "starlark" },
+                capabilities = capabilities,
+                root_dir = vim.fs.root(0, { "Tiltfile", ".git" }),
+            })
+
             vim.lsp.enable({
                 "tailwindcss",
                 "ts_ls",
@@ -125,6 +143,7 @@ return {
                 "zls",
                 "clangd",
                 "pyright",
+                "starlark_lsp",
             })
         end,
     },

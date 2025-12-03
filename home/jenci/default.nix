@@ -2,7 +2,7 @@ _: {
     programs.home-manager.enable = true;
     home.username = "jenci";
     home.homeDirectory = "/home/jenci";
-    home.stateVersion = "25.05";
+    home.stateVersion = "25.11";
     home.sessionVariables.TERM = "ghostty";
     imports = [
         ./programs.nix

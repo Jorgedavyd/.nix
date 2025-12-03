@@ -17,22 +17,18 @@
     systemd.user.services.onedrive = {
         enable = true;
         unitConfig = {
-            Description = "OneDrive client for Linux";
+            Description = "OneDrive Client";
             RequiresMountFor = "/data";
+            After = [ "network-online.target" ];
         };
         serviceConfig = {
-            ProtectSystem = "full";
-            ProtectHostname = true;
-            ProtectKernelTunables = true;
-            ProtectControlGroups = true;
-            RestrictRealtime = true;
-            Group = "users";
-            ExecStart= ''${pkgs.onedrive}/bin/onedrive --monitor --syncdir /data/OneDrive'';
+            ExecStart = "${pkgs.onedrive}/bin/onedrive --monitor";
             Restart = "on-failure";
-            RestartSec = 3;
-            RestartPreventExitStatus = 126;
-            TimeoutStopSec = 90;
+            RestartSec = 5;
+            ProtectSystem = "no";
+            ProtectHome = false;
         };
+
         wantedBy = [ "default.target" ];
     };
 }

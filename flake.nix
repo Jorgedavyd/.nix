@@ -2,16 +2,16 @@
     description = "Jenci's NixOS configuration for main-pc, laptop, server, and WSL";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
         home-manager = {
-            url = "github:nix-community/home-manager/release-25.05";
+            url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
         dev-pkgs.url = "github:jorgedavyd/nix-dev";
         nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     };
 
-    outputs = { self, nixpkgs, home-manager, dev-pkgs, nixos-wsl, ... }@inputs:
+    outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
             inherit (nixpkgs) lib;
 
@@ -20,7 +20,7 @@
             pkgs = import nixpkgs {
                 inherit system;
                 config.allowUnfree = true;
-                overlays = [ dev-pkgs.overlays.default ];
+                overlays = [ inputs.dev-pkgs.overlays.default ];
             };
 
             defaultSettings = {

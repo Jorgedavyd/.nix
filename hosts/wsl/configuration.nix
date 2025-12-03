@@ -15,7 +15,7 @@
             programs.home-manager.enable = true;
             home.username = username;
             home.homeDirectory = "/home/${username}";
-            home.stateVersion = "25.05";
+            home.stateVersion = "25.11";
             imports = [
                 ../../home/${username}/code.nix
                 ../../home/${username}/xdg.nix
@@ -53,5 +53,5 @@
     wsl.enable = true;
     wsl.defaultUser = username;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-    system.stateVersion = "25.05";
+    system.stateVersion = "25.11";
 }

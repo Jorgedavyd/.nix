@@ -1,92 +1,175 @@
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    font-family: "iosevka nerd font";
-    font-weight: 500;
-    font-size: 12px;
-    padding: 0;
+    font-size: 14px;
+    border-radius: 5px;
 }
 
 window#waybar {
-    background: #141415;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, monospace;
+    background-color: transparent;
+    border-bottom: 0px;
+    color: #ebdbb2;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-tooltip {
-    background-color: #141415;
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
-#clock,
-#tray,
-#cpu,
-#memory,
-#battery,
-#network,
-#pulseaudio {
-    margin: 6px 6px 6px 0px;
-    padding: 2px 8px;
+window#waybar.empty #window {
+    background-color: transparent;
 }
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+.modules-right {
+    margin: 10px 10px 0 0;
+}
+.modules-center {
+    margin: 10px 0 0 0;
+}
+.modules-left {
+    margin: 10px 0 0 10px;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    /* box-shadow: inset 0 -3px transparent; */
+    border: none;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+/*
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ebdbb2;
+} */
 
 #workspaces {
-    background-color: #2D2D2F;
-    margin: 6px 0px 6px 6px;
+    background-color: #282828;
 }
 
 #workspaces button {
-    padding: 2px 4px;
-    background-color: #2D2D2F;
-    color: #cdcdcd;
-    margin: 0.25em;
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ebdbb2;
+    border-radius: 0;
 }
 
-#workspaces button.active {
-    color: #d8647e;
+#workspaces button:first-child {
+    border-radius: 5px 0 0 5px;
 }
 
-#workspaces button.empty {
-    color: #cdcdcd;
+#workspaces button:last-child {
+    border-radius: 0 5px 5px 0;
 }
 
-#workspaces button.visible {
-    color: #cdcdcd;
+#workspaces button:hover {
+    color: #d79921;
+}
+
+#workspaces button.focused {
+    background-color: #665c54;
+    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
 #workspaces button.urgent {
-    color: #BF3050;
+    background-color: #b16286;
 }
 
-#clock {
-    background-color: #2D2D2F;
-    color: #cdcdcd;
+#idle_inhibitor,
+#cava,
+#scratchpad,
+#mode,
+#window,
+#clock,
+#battery,
+#backlight,
+#wireplumber,
+#tray,
+#mpris,
+#load {
+    padding: 0 10px;
+    background-color: #282828;
+    color: #ebdbb2;
 }
 
-#tray {
-    background-color: #2D2D2F;
-    color: #cdcdcd;
+#mode {
+    background-color: #689d6a;
+    color: #282828;
+    /* box-shadow: inset 0 -3px #ffffff; */
 }
 
-#battery {
-    background-color: #2D2D2F;
-    color: #cdcdcd;
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
 }
 
-#cpu,
-#memory,
-#network,
-#pulseaudio {
-    background-color: #2D2D2F;
-    color: #cdcdcd;
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
 
-#cpu.critical,
-#memory.critical {
-    background-color: #2D2D2F;
-    color: #BF3050;
+#cava {
+    padding: 0 5px;
 }
 
-#battery.warning,
-#battery.critical,
-#battery.urgent {
-    background-color: #2D2D2F;
-    color: #BF3050;
+#battery.charging, #battery.plugged {
+    background-color: #98971a;
+    color: #282828;
+}
+
+@keyframes blink {
+    to {
+        background-color: #282828;
+        color: #ebdbb2;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #cc241d;
+    color: #ebdbb2;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#wireplumber.muted {
+    background-color: #458588;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#mpris.playing {
+    background-color: #d79921;
+    color: #282828;
+}
+
+#tray menu {
+    font-family: sans-serif;
+}
+
+#scratchpad.empty {
+    background: transparent;
 }
