@@ -8,7 +8,7 @@
         xdg-desktop-portal-hyprland xdg-desktop-portal xdg-utils xdg-user-dirs # ui-theme
         xdg-desktop-portal-gtk bibata-cursors # cursors
         sfmono-liga blexmono-liga font-awesome nerd-fonts.jetbrains-mono # fonts
-        pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia # monitoring
+        playerctl pavucontrol pamixer brightnessctl btop nvtopPackages.nvidia # monitoring
         obsidian ghostty tmux # code
         onedrive # file-manager
         nix-prefetch-scripts nix-prefetch-github nix-prefetch-git nix-prefetch-docker # derivation utils
