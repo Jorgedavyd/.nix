@@ -19,6 +19,17 @@ return {
                 cmp_lsp.default_capabilities()
             )
 
+            vim.lsp.config('rust-analyzer', {
+                capabilities = capabilities,
+                settings = {
+                    ['rust-analyzer'] = {
+                        check = {
+                            command = "clippy",
+                        }
+                    }
+                }
+            })
+
             vim.lsp.config("tailwindcss", {})
 
             vim.lsp.config("ts_ls", {
@@ -136,6 +147,7 @@ return {
             })
 
             vim.lsp.enable({
+                "rust-analyzer",
                 "tailwindcss",
                 "ts_ls",
                 "lua_ls",

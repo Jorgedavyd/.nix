@@ -6,6 +6,7 @@
         cargo
         rust-analyzer
         rustfmt
+        clippy
 
         ## C/C++
         clang-tools
