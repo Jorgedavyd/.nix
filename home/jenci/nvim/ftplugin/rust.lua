@@ -58,7 +58,7 @@ set(
     "n",
     "<leader>vd",
     function()
-        vim.cmd.RustLsp('renderDiagnostic')
+        vim.cmd.RustLsp('renderDiagnostic current')
     end,
     { silent = true, buffer = bufnr }
 )

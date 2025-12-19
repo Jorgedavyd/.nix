@@ -1,14 +1,20 @@
 local bundles = {}
 
+---@param pkg string
+local function get_raw_path(pkg)
+    local p = vim.fn.system({ "nix", "eval", "--raw", "nixpkgs#" .. pkg .. ".outPath" })
+    return vim.trim(p)
+end
+
 local function get_debug_bundles()
     return vim.fn.glob(
-        vim.fn.resolve(os.getenv("HOME") .. "/java/java-debug/com.microsoft.java.debug.plugin/target/*.jar")
+        vim.fn.resolve(get_raw_path("vscode-extensions.vscjava.vscode-java-debug") .. "/com.microsoft.java.debug.plugin/target/*.jar")
     )
 end
 
 local function get_test_bundles()
     return vim.fn.glob(
-        vim.fn.resolve(os.getenv("HOME") .. "/java/vscode-java-test/java-extension/com.microsoft.java.test.plugin/target/com.microsoft.java.test.plugin-*.jar"), 1
+        vim.fn.resolve(get_raw_path("vscode-extensions.vscjava.vscode-java-test") .. "/java-extension/com.microsoft.java.test.plugin/target/com.microsoft.java.test.plugin-*.jar")
     )
 end
 

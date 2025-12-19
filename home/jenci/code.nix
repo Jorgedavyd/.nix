@@ -1,9 +1,7 @@
 { pkgs, ... }: {
-    ## Compilers, Interpreters, LSPs, Formatters and testing
+    ## Interpreters, LSPs, Formatters and testing
     home.packages = with pkgs; [
         ## Rust
-        rustc
-        cargo
         rust-analyzer
         rustfmt
         clippy
@@ -17,39 +15,25 @@
         black
 
         ## Java
-        maven
-        jdk21
+        jdt-language-server
+        vscode-extensions.vscjava.vscode-java-debug
+        vscode-extensions.vscjava.vscode-java-test
 
         ## TypeScript, JavaScript, Svelte
         typescript-language-server
         tailwindcss-language-server
-        nodejs
 
         ## Lua
         lua
         lua-language-server
-        stylua
 
         ## Zig
         zls
-        zig
 
         ## Nix
         nil
 
         ## LLDB (zig, rust, cpp, c)
         vscode-extensions.vadimcn.vscode-lldb.adapter
-
-        ## Python
-        python311
-
-        ## Devops
-        kubectl
-
-        ## VSCode
-        vscode-fhs
-
-        ## Tiltfile
-        starpls
     ];
 }
