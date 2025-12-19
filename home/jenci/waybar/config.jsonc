@@ -144,44 +144,4 @@
         },
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     }
-},{
-"output": ["HDMI-A-1"],
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": [
-        "hyprland/workspaces",
-        "cava",
-        "hyprland/submap"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "hyprland/window"
-    ],
-    "hyprland/workspaces": {
-        "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "",
-            "2": " ",
-            "3": ""
-        }
-    },
-    "hyprland/window": {
-        "format": "{title}",
-        "max-length": 40
-    },
-    "hyprland/submap": {
-        "format": "{}"
-    },
-    "clock": {
-        "timezone": "America/Asuncion",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    }
 }]
