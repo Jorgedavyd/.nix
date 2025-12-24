@@ -11,10 +11,12 @@
         gcc
 
         ## Python
+        python3
         pyright
         black
 
         ## Java
+        jdk21
         jdt-language-server
         vscode-extensions.vscjava.vscode-java-debug
         vscode-extensions.vscjava.vscode-java-test

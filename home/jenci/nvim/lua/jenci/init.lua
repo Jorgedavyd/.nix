@@ -29,21 +29,49 @@ autocmd({"BufWritePre"}, {
     command = [[%s/\s\+$//e]],
 })
 
+---helper function
+---@param keymap string
+---@param count number
+---@param severity any
+---@param opts any
+local function jump_to_diagnostic(keymap, count, severity, opts)
+    vim.keymap.set("n", keymap, function()
+        vim.diagnostic.jump({
+            count = count,
+            severity = severity,
+            float = {
+                border = "rounded",
+                source = "always"
+            },
+        })
+    end, opts)
+end
+
 autocmd('LspAttach', {
     group = JenciAuGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
         if not vim.endswith(e.file, "rs") then
-            vim.keymap.set("n", "K", function() vim.cmd[[Lspsaga hover_doc]] end, opts)
-            vim.keymap.set("n", "<leader>vd", function() vim.cmd[[Lspsaga show_line_diagnostics ]] end, opts)
-            vim.keymap.set("n", "<leader>vca", function() vim.cmd[[Lspsaga code_action ]] end, opts)
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+            vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
+            vim.keymap.set("n", "<leader>vd", function()
+                vim.diagnostic.open_float(nil, { focus = false })
+            end, opts)
+            jump_to_diagnostic("[e", -1, vim.diagnostic.severity.ERROR, opts)
+            jump_to_diagnostic("]e", 1, vim.diagnostic.severity.ERROR, opts)
+            jump_to_diagnostic("[w", -1, vim.diagnostic.severity.WARN, opts)
+            jump_to_diagnostic("]w", 1, vim.diagnostic.severity.WARN, opts)
+            jump_to_diagnostic("[i", -1, vim.diagnostic.severity.INFO, opts)
+            jump_to_diagnostic("]i", 1, vim.diagnostic.severity.INFO, opts)
+            jump_to_diagnostic("[h", -1, vim.diagnostic.severity.HINT, opts)
+            jump_to_diagnostic("]h", 1, vim.diagnostic.severity.HINT, opts)
+            jump_to_diagnostic("[d", -1, nil, opts)
+            jump_to_diagnostic("]d", 1, nil, opts)
         end
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "gD", function() vim.cmd[[Lspsaga peek_definition]] end, opts)
-        vim.keymap.set("n", "<leader>ic", function() vim.cmd[[Lspsaga incoming_calls]] end, opts)
-        vim.keymap.set("n", "<leader>oc", function() vim.cmd[[Lspsaga outgoing_calls]] end, opts)
-        vim.keymap.set("n", "<leader>vrn", function() vim.cmd[[Lspsaga rename]] end, opts)
-        vim.keymap.set("i", "<c-h>", function() vim.lsp.buf.signature_help() end, opts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+        vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
+        vim.keymap.set("i", "<c-h>", vim.lsp.buf.signature_help, opts)
     end
 })
 

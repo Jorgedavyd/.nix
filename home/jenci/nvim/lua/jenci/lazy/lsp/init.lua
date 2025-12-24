@@ -158,25 +158,5 @@ return {
                 "starlark_lsp",
             })
         end,
-    },
-    {
-        'nvimdev/lspsaga.nvim',
-        config = function()
-            require('lspsaga').setup({
-                lightbulb = {
-                    enable = false,
-                },
-                finder = {
-                    max_height = 0.6,
-                    keys = {
-                        vsplit = 'v',
-                    },
-                }
-            })
-        end,
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter',
-            'nvim-tree/nvim-web-devicons',
-        }
     }
 }
